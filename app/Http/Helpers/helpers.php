@@ -229,8 +229,6 @@ function create_order($service, $price, $cost, $service_name){
 
         return 1;
 
-
-
     }elseif($result == "MAX_PRICE_EXCEEDED" || $result == "NO_NUMBERS" || $result == "TOO_MANY_ACTIVE_RENTALS" || $result == "NO_MONEY") {
         return 0;
     }else{
@@ -425,7 +423,7 @@ function get_world_services(){
 }
 
 
-function create_world_order($country, $service, $price, $id){
+function create_world_order($country, $service, $price, $id, $cost){
 
 
     $key = env('WKEY');
@@ -471,21 +469,21 @@ function create_world_order($country, $service, $price, $id){
         $ver->country = $var->country;
         $ver->service = $var->service;
         $ver->expires_in = $var->expires_in / 10 - 20;
-        $ver->cost = $price;
+        $ver->cost = $cost;
         $ver->api_cost = $var->cost;
         $ver->status = 1;
         $ver->type = 2;
 
         $ver->save();
 
+
+        User::where('id', Auth::id())->decrement('wallet', $cost);
+
         return 3;
 
 
 
     }
-
-
-
 
 
 
@@ -723,7 +721,7 @@ function pool_cost($service, $country){
         "key" => $key,
         "country" => $country,
         "service" => $service,
-        "pool" => '7',
+        "pool" => '',
     );
 
     $body = json_encode($databody);
@@ -753,10 +751,12 @@ function pool_cost($service, $country){
     $high_price = $var->high_price ?? null;
     $rate = $var->success_rate ?? null;
 
-    if($get_s_price < 4){
-        $price = $get_s_price * 1.3;
-    }else{
+    if($high_price == null){
         $price = $get_s_price;
+    }elseif($high_price > 4){
+        $price = $high_price * 1.3;
+    }else{
+        $price = $high_price;
     }
 
 

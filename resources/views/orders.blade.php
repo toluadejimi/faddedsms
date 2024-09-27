@@ -35,6 +35,108 @@
         </div>
 
 
+        <div class="row">
+            <div class="col-md-6 col-xl-6 col-sm-12">
+                <div class="card">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+                        <div class="offcanvas-body">
+
+
+
+                            <div class="">
+
+                                <div class="p-2 col-lg-6">
+                                    <input type="text" id="searchInput" class="form-control"
+                                           placeholder="Search for a service..." onkeyup="filterServices()">
+                                </div>
+
+
+                                <div class="row my-3 p-1 text-white"
+                                     style="background: #dedede; border-radius: 10px; font-size: 10px; border-radius: 12px">
+                                    <div class="col-5">
+                                        <h5 class="mt-2">Services</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="mt-2">Price</h5>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div style="height:700px; width:100%; overflow-y: scroll;" class="p-2">
+
+
+                                @foreach ($services as $key => $value)
+                                    <div class="row service-row text-white">
+                                        @foreach ($value as $innerKey => $innerValue)
+                                            <div style="font-size: 11px" class="col-5 service-name d-flex justify-content-start">
+                                                🇺🇸 {{ $innerValue->name }}
+                                            </div>
+
+                                            <div style="font-size: 11px" class="col">
+                                                @php $cost = $get_rate * $innerValue->cost + $margin  @endphp
+                                                <strong>N{{ number_format($cost, 2) }}</strong>
+                                            </div>
+
+                                            <div style="font-size: 11px" class="col">
+
+                                            </div>
+
+
+                                            <div class="col mr-3">
+                                                @auth
+                                                    <form action="order-usano">
+                                                        <input hidden name="service" value="{{ $key }}">
+                                                        <input hidden name="price" value="{{ $cost }}">
+                                                        <input hidden name="cost" value="{{ $innerValue->cost }}">
+                                                        <input hidden name="name" value="{{ $innerValue->name }}">
+                                                        <button class="myButton" style="border: 0px; background: transparent" onclick="hideButton(this)"><i class="fa fa-shopping-bag"></i></button>
+                                                    </form>
+                                                @else
+
+                                                    <a class=""
+                                                       href="/login">
+                                                        <i class="fa fa-lock text-dark"> Login</i>
+                                                    </a>
+                                                @endauth
+
+
+                                                <script>
+                                                    function hideButton(link) {
+                                                        // Hide the clicked link
+                                                        link.style.display = 'none';
+
+                                                        setTimeout(function () {
+                                                            link.style.display = 'inline'; // or 'block' depending on your layout
+                                                        }, 5000); // 5 seconds
+                                                    }
+                                                </script>
+
+
+                                            </div>
+
+
+                                        @endforeach
+                                    </div>
+                                @endforeach
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
 
 
         <div class="container technology-block">
@@ -94,7 +196,7 @@
                                                     </td>
 
                                                     @if($data->sms != null)
-                                                        <td style="font-size: 12px; color: white">{{ $data->sms }}
+                                                        <td style="font-size: 12px; color: #ffffff">{{ $data->sms }}
                                                         </td>
                                                     @else
                                                         <style>
@@ -134,7 +236,7 @@
                                                                 aspect-ratio: 1;
                                                                 border-radius: 50%;
                                                                 border: 1px solid;
-                                                                border-color: #000 #0000;
+                                                                border-color: #fc6507 #0000;
                                                                 animation: l1 1s infinite;
                                                             }
 
@@ -149,7 +251,7 @@
                                                             <div id="l1" class="justify-content-start">
                                                             </div>
                                                             <div>
-                                                                <input style=" " class="border-0"
+                                                                <input style="background: none;" class="border-0 "
                                                                        id="response-input{{$data->id}}">
                                                             </div>
 
@@ -230,6 +332,16 @@
 
             </div>
         </div>
+
+        <script>
+            window.onload = function() {
+                setInterval(function() {
+                    location.reload();
+                }, 40000);
+            };
+        </script>
+
+
     </section>
 
 @endsection

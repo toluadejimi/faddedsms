@@ -286,103 +286,6 @@
                     </div>
 
 
-                    @if ($product != null)
-                        <div class="d-flex justify-content-center col-xl-12 col-md-12 col-sm-12 p-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-
-                                    <div class="row">
-                                        <p class="text-muted text-center">Service Information</p>
-
-                                        <h5 class="text-center my-2">Amount</h5>
-                                        <h6 class="text-center text-muted my-2 mb-4">Price:
-                                            NGN {{ number_format($price, 2) }}</h6>
-
-
-
-
-                                        <h5 class="text-center my-2">Available Nuumbers</h5>
-                                        <h6 class="text-center text-muted my-2 mb-4">
-                                            {{ number_format($stock, 2)}}</h6>
-
-                                        <h5 class="text-center text-muted my-2">Success rate: <span
-                                                style="font-size: 30px; color: rgb(63,63,63);"> @if ($rate < 10)
-                                                    {{ $rate }}%
-                                                @elseif ($rate < 20)
-                                                    {{ $rate }}%
-                                                @elseif ($rate < 30)
-                                                    {{ $rate }}%
-                                                @elseif ($rate < 40)
-                                                    {{ $rate }}%
-                                                @elseif ($rate < 50)
-                                                    {{ $rate }}%
-                                                @elseif ($rate < 60)
-                                                    {{ $rate }}%
-                                                @elseif ($rate < 70)
-                                                    {{ $rate }}%
-                                                @elseif ($rate < 80)
-                                                    {{ $rate }}%
-
-                                                @elseif ($rate < 90)
-                                                    {{ $rate }}%
-                                                @elseif ($rate <= 100)
-                                                    {{ $rate }}%
-                                                @else
-                                                @endif</span></h5>
-                                        <h6></h6>
-
-
-                                        @if (Auth::user()->wallet < $price && $stock > 0)
-                                            <a href="fund-wallet" class="btn btn-secondary text-white btn-lg">Fund
-                                                Wallet</a>
-                                        @elseif($stock > 0 && Auth::user()->wallet > $price)
-                                            <form action="order_now" method="POST">
-                                                @csrf
-
-                                                <input type="text" name="country" hidden value="{{ $count_id ?? null }}">
-                                                <input type="text" name="price" hidden value="{{ $price ?? null }}">
-                                                <input type="text" name="service" hidden value="{{ $serv ?? null }}">
-
-
-                                                <button type="submit"
-                                                        style="border: 0px; background: rgb(63,63,63); color: white;"
-                                                        class="mb-2 btn btn w-100 btn-lg mt-6">Buy Number
-                                                    Now
-                                                </button>
-
-
-                                                <p class="text-muted text-center my-5">
-                                                    At FADDEDSMS, we prioritize quality, ensuring that you receive the
-                                                    highest standard of SMS verifications for all your needs. Our commitment
-                                                    to excellence means we only offer non-VoIP phone numbers, guaranteeing
-                                                    compatibility with any service you require.
-                                                </p>
-
-
-                                            </form>
-                                        @else
-
-                                            <a href="/home" class="btn btn-danger text-white btn-lg">Number not available</a>
-
-                                        @endif
-
-
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                        </div>
-                    @endif
-
-
-
-
-
-
-
-
 
                 </div>
             </div>
@@ -390,37 +293,8 @@
 
 
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
-            <div class="offcanvas-header">
-
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-
-            <div class="offcanvas-body">
-                <div class="alert alert-success mb-4" role="alert">
-                    <p class="m-0 fw-bold fs-6">
-                        Verification for all countries
-                    </p>
-                </div>
 
 
-
-
-
-
-
-
-
-            </div>
-        </div>
-        <!-- Enable backdrop end --><!-- both scrolling end -->
-
-
-
-        <div class="container technology-block">
-
-
-        </div>
 
     </section>
 

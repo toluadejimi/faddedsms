@@ -18,6 +18,8 @@ class WorldNumberController extends Controller
         $get_rate = Setting::where('id', 1)->first()->rate;
         $margin = Setting::where('id', 1)->first()->margin;
 
+        $data['services'] = get_services();
+
 
         $data['get_rate'] = Setting::where('id', 1)->first()->rate;
         $data['margin'] = Setting::where('id', 1)->first()->margin;
@@ -274,43 +276,14 @@ class WorldNumberController extends Controller
             return back()->with('error', "Insufficient Funds");
         }
 
-        if($price == null){
 
-            $countries = get_world_countries();
-            $services = get_world_services();
-
-            $verification = Verification::where('user_id', Auth::id())->get();
-            $sms = Verification::where('user_id', Auth::id())->where('status', 1)->first()->sms;
-            $number = Verification::where('user_id', Auth::id())->where('status', 1)->first()->phone;
-            $num = Verification::where('user_id', Auth::id())->where('status', 1)->first();
-
-            $data['services'] = $services;
-            $data['countries'] = $countries;
-            $data['verification'] = $verification;
-            $data['sms'] = $sms;
-            $data['number'] = $number;
-            $data['product'] = null;
-
-            $data['number_order'] = 1;
-            $data['product'] = null;
-
-            $data['num'] = $num;
-
-
-            $data['services'] = get_world_services();
-            $data['get_rate'] = Setting::where('id', 1)->first()->rate;
-            $data['margin'] = Setting::where('id', 1)->first()->margin;
-            $data['sms_order'] = Verification::where('user_id', Auth::id())->where('status' , 1)->first();
-            $data['order'] = 1;
-
-            $data['verification'] = Verification::where('user_id', Auth::id())->paginate(10);
-
-
-            return view('receivesmsworld', $data);
+        if (Auth::user()->wallet < $cost) {
+            return back()->with('error', "Insufficient Funds");
         }
 
 
-        $order = create_world_order($country, $service, $price, $id);
+
+        $order = create_world_order($country, $service, $price, $id, $cost);
 
         if ($order == 5) {
             return redirect('world')->with('error', 'Number Currently out of stock, Please check back later');
@@ -323,41 +296,13 @@ class WorldNumberController extends Controller
         }
 
         if ($order == 2) {
-            User::where('id', Auth::id())->increment('wallet', $request->price);
             $message = "FADDEDSMS | Error";
             send_notification($message);
-            send_notification3($message);
             return redirect('world')->with('error', 'Error occurred, Please try again');
         }
 
         if ($order == 3) {
-            $countries = get_world_countries();
-            $services = get_world_services();
-            $verification = Verification::where('user_id', Auth::id())->get();
-            $sms = Verification::where('user_id', Auth::id())->where('status', 1)->first()->sms;
-            $number = Verification::where('user_id', Auth::id())->where('status', 1)->first()->phone;
-            $num = Verification::where('user_id', Auth::id())->where('status', 1)->first();
-
-            $data['services'] = $services;
-            $data['countries'] = $countries;
-            $data['verification'] = $verification;
-            $data['sms'] = $sms;
-            $data['number'] = $number;
-            $data['product'] = null;
-
-            $data['number_order'] = 1;
-            $data['product'] = null;
-
-            $data['num'] = $num;
-
-
-            $data['services'] = get_world_services();
-            $data['get_rate'] = Setting::where('id', 1)->first()->rate;
-            $data['margin'] = Setting::where('id', 1)->first()->margin;
-            $data['sms_order'] = Verification::where('user_id', Auth::id())->where('status' , 1)->first();
-            $data['order'] = 1;
-            $data['verification'] = Verification::where('user_id', Auth::id())->paginate(10);
-            return view('receivesmsworld', $data);
+           return redirect('orders')->with('message', "Order successful");
         }
     }
 

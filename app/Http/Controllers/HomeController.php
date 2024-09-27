@@ -112,7 +112,7 @@ class HomeController extends Controller
                 return view('receivesms', $data);
 
             }
-            return redirect('us');
+            return redirect('orders');
         }
 
         if ($order == 0) {
@@ -132,12 +132,6 @@ class HomeController extends Controller
         }
 
         if ($order == 1) {
-//            $data['services'] = get_services();
-//            $data['get_rate'] = Setting::where('id', 1)->first()->rate;
-//            $data['margin'] = Setting::where('id', 1)->first()->margin;
-//            $data['sms_order'] = Verification::where('user_id', Auth::id())->where('status' , 1)->first();
-//            $data['order'] = 1;
-//            $data['verification'] = Verification::latest()->where('user_id', Auth::id())->paginate(10);
             return redirect('orders')->with('message', 'Order successful');
         }
     }
@@ -168,9 +162,6 @@ class HomeController extends Controller
     public function admin_cancle_sms(Request $request)
 
     {
-
-
-
 
         $order = Verification::where('id', $request->id)->first() ?? null;
         $user_id = $order->user_id;
@@ -290,9 +281,6 @@ class HomeController extends Controller
 
     public function cancle_sms(Request $request)
     {
-
-
-
         $order = Verification::where('id', $request->id)->first() ?? null;
 
 
@@ -309,45 +297,22 @@ class HomeController extends Controller
             $orderID = $order->order_id;
             $can_order = cancel_order($orderID);
 
-            if($request->delete == 1){
-
-                if($order->status == 1){
-
-                    $amount = number_format($order->cost, 2);
-                    User::where('id', Auth::id())->increment('wallet', $order->cost);
-                    Verification::where('id', $request->id)->delete();
-                    return redirect('us')->with('message', "Order has been cancled, NGN$amount has been refunded");
-
-
-                }
-
-
-            }
-
-
             if ($can_order == 0) {
-                return redirect('us')->with('error', "Order has been removed");
+                return redirect('us')->with('error', "Order has been canceled");
             }
 
 
             if ($can_order == 1) {
                 $amount = number_format($order->cost, 2);
-                User::where('id', Auth::id())->increment('wallet', $order->cost);
                 Verification::where('id', $request->id)->delete();
+                User::where('id', Auth::id())->increment('wallet', $order->cost);
+                $message = Auth::user()->email." just been refunded | $order->cost";
+                send_notification($message);
+                send_notification2($message);
                 return redirect('us')->with('message', "Order has been canceled, NGN$amount has been refunded");
+
             }
 
-
-            if ($can_order == 3) {
-                $order = Verification::where('id', $request->id)->first() ?? null;
-                if ($order->status != 1 || $order == null) {
-                    return redirect('us')->with('error', "Please try again later");
-                }
-                $amount = number_format($order->cost, 2);
-                User::where('id', Auth::id())->increment('wallet', $order->cost);
-                Verification::where('id', $request->id)->delete();
-                return redirect('us')->with('message', "Order has been canceled, NGN$amount has been refunded");
-            }
         }
 
         if ($order->status == 1 && $order->type == 2) {
@@ -358,22 +323,6 @@ class HomeController extends Controller
 
             $can_order = cancel_world_order($orderID);
 
-            if($request->delete == 1){
-
-
-                if($order->status == 1){
-
-                    $amount = number_format($order->cost, 2);
-                    User::where('id', Auth::id())->increment('wallet', $order->cost);
-                    Verification::where('id', $request->id)->delete();
-                    return redirect('us')->with('message', "Order has been canceled, NGN$amount has been refunded");
-
-
-                }
-
-
-            }
-
 
             if ($can_order == 0) {
                 return back()->with('message', "Your order cannot be cancelled yet, please try again later.");
@@ -381,25 +330,25 @@ class HomeController extends Controller
 
 
             if ($can_order == 1) {
+
                 $amount = number_format($order->cost, 2);
                 User::where('id', Auth::id())->increment('wallet', $order->cost);
                 Verification::where('id', $request->id)->delete();
-                return redirect('us')->with('message', "Order has been canceled, NGN$amount has been refunded");
+
+                $message = Auth::user()->email." just been refunded | $order->cost";
+                send_notification($message);
+                send_notification2($message);
+
+                return redirect('world')->with('message', "Order has been canceled, NGN$amount has been refunded");
             }
 
 
             if ($can_order == 3) {
-                $order = Verification::where('id', $request->id)->first() ?? null;
-                if ($order->status != 1 || $order == null) {
-                    return redirect('us')->with('error', "Please try again later");
-                }
-                $amount = number_format($order->cost, 2);
-                User::where('id', Auth::id())->increment('wallet', $order->cost);
-                Verification::where('id', $request->id)->delete();
-                return redirect('us')->with('message', "Order has been canceled, NGN$amount has been refunded");
+                return redirect('world')->with('error', "We could not find this order!");
             }
         }
     }
+
 
 
     public function check_sms(Request $request)
@@ -1320,8 +1269,11 @@ class HomeController extends Controller
         $orders = Verification::latest()->where('user_id', Auth::id())->get() ?? null;
         $spent = Verification::where('user_id', Auth::id())->where('status', 2)->sum('cost');
         $verification = Verification::where('user_id', Auth::id())->where('status', 2)->count();
+        $services = get_services();
+        $get_rate = Setting::where('id', 1)->first()->rate;
+        $margin = Setting::where('id', 1)->first()->margin;
 
-        return view('orders', compact('orders', 'spent','verification'));
+        return view('orders', compact('orders', 'get_rate', 'margin','services', 'spent','verification'));
     }
 
 
@@ -1437,77 +1389,6 @@ class HomeController extends Controller
 
 
     }
-
-
-//    public function delete_w_order(request $request)
-//    {
-//
-//        $order = Verification::where('id', $request->id)->first() ?? null;
-//
-//
-//        if ($order == null) {
-//            return redirect('home')->with('error', 'Order not found');
-//        }
-//
-//        if ($order->status == 2) {
-//            Verification::where('id', $request->id)->delete();
-//            return back()->with('message', "Order has been successfully deleted");
-//        }
-//
-//        if ($order->status == 1) {
-//
-//            $orderID = $order->order_id;
-//            $can_order = cancel_order($orderID);
-//
-//            if ($can_order == 0) {
-//                return back()->with('error', "Please wait and try again later");
-//            }
-//
-//
-//            if ($can_order == 1) {
-//                $amount = number_format($order->cost, 2);
-//                User::where('id', Auth::id())->increment('wallet', $order->cost);
-//                Verification::where('id', $request->id)->delete();
-//                return back()->with('message', "Order has been cancled, NGN$amount has been refunded");
-//            }
-//
-//
-//            if ($can_order == 3) {
-//                $amount = number_format($order->cost, 2);
-//                User::where('id', Auth::id())->increment('wallet', $order->cost);
-//                Verification::where('id', $request->id)->delete();
-//                return back()->with('message', "Order has been cancled, NGN$amount has been refunded");
-//            }
-//        }
-//
-//        if ($order->status == 1 && $order->type == 2 ) {
-//
-//
-//
-//            $orderID = $order->order_id;
-//            $can_order = cancel_world_order($orderID);
-//
-//            if ($can_order == 0) {
-//                return back()->with('error', "Please wait and try again later");
-//            }
-//
-//
-//            if ($can_order == 1) {
-//                $amount = number_format($order->cost, 2);
-//                User::where('id', Auth::id())->increment('wallet', $order->cost);
-//                Verification::where('id', $request->id)->delete();
-//                return back()->with('message', "Order has been cancled, NGN$amount has been refunded");
-//            }
-//
-//
-//            if ($can_order == 3) {
-//                $amount = number_format($order->cost, 2);
-//                User::where('id', Auth::id())->increment('wallet', $order->cost);
-//                Verification::where('id', $request->id)->delete();
-//                return back()->with('message', "Order has been cancled, NGN$amount has been refunded");
-//            }
-//        }
-//    }
 
 
 
