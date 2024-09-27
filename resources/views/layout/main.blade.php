@@ -184,8 +184,8 @@
 
         </div>
         <ul class="messages">
-            <li style="color: white" class="other"><a style="color: white"  href="https://api.whatsapp.com/send?phone=2349138248126" target="_blank"><i class="bi bi-whatsapp"> </i> Chat on whatsapp </a></li>
-            <li style="color: white" class="other"><a style="color: white"  href="https://t.me/FADDEDSMS" target="_blank"><i class="bi bi-telegram"> </i> Chat on Telegram</a></li>
+            <li style="color: white" class="other"><a style="color: white"  href=#" target="_blank"><i class="bi bi-whatsapp"> </i> Chat on whatsapp </a></li>
+            <li style="color: white" class="other"><a style="color: white"  href="#" target="_blank"><i class="bi bi-telegram"> </i> Chat on Telegram</a></li>
         </ul>
     </div>
 </div>
