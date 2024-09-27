@@ -460,6 +460,24 @@
 
 
 
+    <script>
+        function filterServices() {
+            var input, filter, serviceRows, serviceNames, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            serviceRows = document.getElementsByClassName("service-row");
+            for (i = 0; i < serviceRows.length; i++) {
+                serviceNames = serviceRows[i].getElementsByClassName("service-name");
+                txtValue = serviceNames[0].textContent || serviceNames[0].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    serviceRows[i].style.display = "";
+                } else {
+                    serviceRows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
 
 
 
