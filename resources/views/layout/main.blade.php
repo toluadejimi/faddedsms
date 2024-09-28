@@ -94,7 +94,7 @@
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="https://api.whatsapp.com/send?phone=2349138248126" >Support</a >
+                           href="#" >Support</a >
                     </li>
 
 
