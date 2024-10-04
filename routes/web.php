@@ -144,6 +144,8 @@ Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () 
 
 
 
+    Route::any('update-sim-rate',  [AdminController::class,'update_sim_rate']);
+    Route::any('update-sim-cost',  [AdminController::class,'update_sim_cost']);
 
 });
 

@@ -392,6 +392,24 @@ class AdminController extends Controller
 
     }
 
+    public function update_sim_rate(request $request)
+    {
+        Setting::where('id', 3)->update(['rate' => $request->rate]);
+
+        return back()->with('message', "Rate Update Successfully");
+
+    }
+
+
+    public function update_sim_cost(request $request)
+    {
+        Setting::where('id', 3)->update(['margin' => $request->cost]);
+
+        return back()->with('message', "Cost Update Successfully");
+
+    }
+
+
 
 
 
