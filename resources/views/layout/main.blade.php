@@ -24,22 +24,11 @@
     <link rel="stylesheet" href="{{url('')}}/public/assets/css/style2.css">
 
 
-
     <link rel="stylesheet" type="text/css" href="{{url('')}}/public/api/daisysms.css">
 
     <script src="{{url('')}}/public/api/l.js" async=""></script>
     <script src="{{url('')}}/public/api/client.js" type="text/javascript" async=""></script>
     <link href="{{url('')}}/public/api/client_default.css" type="text/css" rel="stylesheet">
-
-
-
-
-
-
-
-
-
-
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -67,10 +56,12 @@
             background: #fff;
             border: 1px solid #ddd;
         }
+
         .search-results li {
             padding: 10px;
             cursor: pointer;
         }
+
         .search-results li:hover {
             background: #eee;
         }
@@ -92,12 +83,7 @@
         }
 
 
-
     </style>
-
-
-
-
 
 
 </head><!-- [Head] end --><!-- [Body] Start -->
@@ -110,7 +96,7 @@
     <nav class="navbar navbar-expand-md navbar-light default">
         <div class="container">
             <a class="navbar-brand" href="/"
-            ><img src="{{url('')}}/public/assets/images/logo-dark.svg" alt="logo"/> </a >
+            ><img src="{{url('')}}/public/assets/images/logo-dark.svg" alt="logo"/> </a>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
@@ -124,29 +110,24 @@
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="fund-wallet" >Fund Wallet</a >
+                           href="fund-wallet">Fund Wallet</a>
                     </li>
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="orders" >My Orders</a >
+                           href="orders">My Orders</a>
                     </li>
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="#" >Support</a >
+                           href="#">Support</a>
                     </li>
 
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="https://fadded-socials.com/" > Buy Social Account</a >
+                           href="https://fadded-socials.com/"> Buy Social Account</a>
                     </li>
-
-
-
-
-
 
 
                     <li class="nav-item px-1">
@@ -154,29 +135,25 @@
                     </li>
 
 
-
-
-
                 </ul>
             </div>
-
-
 
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 
-                    <li class="nav-item">
-                        <a
-                            style="background: rgb(63,63,63); color: white"
-                            class="btn btn btn-buy"
-                            target="_blank"
-                            href="fund-wallet"><i class="ti ti-wallet"></i
-                            >NGN {{number_format(Auth::user()->wallet, 2)}} </a>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <a
+                                style="background: rgb(63,63,63); color: white"
+                                class="btn btn btn-buy"
+                                target="_blank"
+                                href="fund-wallet"><i class="ti ti-wallet"></i
+                                >NGN {{number_format(Auth::user()->wallet, 2)}} </a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
-
 
 
             <button
@@ -207,11 +184,7 @@
 <body>
 
 
-
-
 @yield('content')
-
-
 
 
 <div class="floating-chat">
@@ -224,8 +197,10 @@
 
         </div>
         <ul class="messages">
-            <li style="color: white" class="other"><a style="color: white"  href=#" target="_blank"><i class="bi bi-whatsapp"> </i> Chat on whatsapp </a></li>
-            <li style="color: white" class="other"><a style="color: white"  href="#" target="_blank"><i class="bi bi-telegram"> </i> Chat on Telegram</a></li>
+            <li style="color: white" class="other"><a style="color: white" href=#" target="_blank"><i
+                        class="bi bi-whatsapp"> </i> Chat on whatsapp </a></li>
+            <li style="color: white" class="other"><a style="color: white" href="#" target="_blank"><i
+                        class="bi bi-telegram"> </i> Chat on Telegram</a></li>
         </ul>
     </div>
 </div>
@@ -234,7 +209,6 @@
 <footer class="footer d-flex justify-content-center mb-5">
     <p class="text-center mb-5">2024 FADDEDSMS</p>
 </footer>
-
 
 
 <!-- Required Js -->
@@ -261,7 +235,7 @@
         myStorage.setItem('chatID', createUUID());
     }
 
-    setTimeout(function() {
+    setTimeout(function () {
         element.addClass('enter');
     }, 1000);
 
@@ -288,7 +262,7 @@
         element.find('.header button').off('click', closeElement);
         element.find('#sendMessage').off('click', sendNewMessage);
         element.find('.text-box').off('keydown', onMetaAndEnter).prop("disabled", true).blur();
-        setTimeout(function() {
+        setTimeout(function () {
             element.find('.chat').removeClass('enter').show()
             element.click(openElement);
         }, 500);
