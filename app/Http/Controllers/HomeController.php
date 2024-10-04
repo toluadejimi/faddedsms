@@ -372,7 +372,7 @@ class HomeController extends Controller
             $data->save();
 
 
-            $message = Auth::user()->email . "| wants to fund |  NGN " . number_format($request->amount) . " | with ref | $ref |  on ACEVERIFY";
+            $message = Auth::user()->email . "| wants to fund |  NGN " . number_format($request->amount) . " | with ref | $ref |  on FaddedSMS";
             send_notification2($message);
 
 
@@ -405,7 +405,7 @@ class HomeController extends Controller
             $data->save();
 
 
-            $message = Auth::user()->email . "| wants to fund Manually |  NGN " . number_format($request->amount) . " | with ref | $ref |  on ACEVERIFY";
+            $message = Auth::user()->email . "| wants to fund Manually |  NGN " . number_format($request->amount) . " | with ref | $ref |  on FaddedSMS";
             send_notification2($message);
 
 
@@ -441,7 +441,7 @@ class HomeController extends Controller
         $pay->save();
 
 
-        $message = Auth::user()->email . "| submitted payment receipt |  NGN " . number_format($request->amount) . " | on ACEVERIFY";
+        $message = Auth::user()->email . "| submitted payment receipt |  NGN " . number_format($request->amount) . " | on FaddedSMS";
         send_notification2($message);
 
         return view('confirm-pay');
@@ -469,7 +469,7 @@ class HomeController extends Controller
                 ]);
 
                 $data = array(
-                    'fromsender' => 'noreply@acesmsverify.com', 'ACEVERIFY',
+                    'fromsender' => 'noreply@faddedsms.com', 'FaddedSMS',
                     'subject' => "Verify Account",
                     'toreceiver' => $email,
                     'url' => $url,
@@ -599,7 +599,7 @@ class HomeController extends Controller
         ]);
 
         $data = array(
-            'fromsender' => 'noreply@acesmsverify.com', 'ACEVERIFY',
+            'fromsender' => 'noreply@faddedsms.com', 'FaddedSMS',
             'subject' => "Verify Account",
             'toreceiver' => $email,
             'url' => $url,
@@ -715,7 +715,7 @@ class HomeController extends Controller
             ]);
 
             $data = array(
-                'fromsender' => 'noreply@acesmsverify.com', 'ACEVERIFY',
+                'fromsender' => 'noreply@faddessms.com', 'FaddedSMS',
                 'subject' => "Reset Password",
                 'toreceiver' => $email,
                 'url' => $url,
