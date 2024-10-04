@@ -409,6 +409,24 @@ class AdminController extends Controller
 
     }
 
+    public function update_smspool_rate(request $request)
+    {
+        Setting::where('id', 1)->update(['rate' => $request->rate]);
+
+        return back()->with('message', "Rate Update Successfully");
+
+    }
+
+
+    public function update_smspool_cost(request $request)
+    {
+        Setting::where('id', 1)->update(['margin' => $request->cost]);
+
+        return back()->with('message', "Cost Update Successfully");
+
+    }
+
+
 
 
 

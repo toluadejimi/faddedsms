@@ -93,6 +93,9 @@ Route::get('verify-account-now',  [HomeController::class,'verify_account_now']);
 Route::get('verify-account-now-success',  [HomeController::class,'verify_account_now_page']);
 
 
+Route::any('update-smspool-rate',  [AdminController::class,'update_smspool_rate']);
+Route::any('update-smspool-cost',  [AdminController::class,'update_smspool_cost']);
+
 
 
 Route::any('get-smscode',  [HomeController::class,'get_smscode']);
