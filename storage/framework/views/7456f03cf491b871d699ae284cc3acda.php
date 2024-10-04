@@ -58,6 +58,46 @@
           crossorigin="anonymous"/>
 
 
+    <style>
+        .search-results {
+            max-height: 300px;
+            overflow-y: auto;
+            position: absolute;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        .search-results li {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .search-results li:hover {
+            background: #eee;
+        }
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .search-container {
+            position: relative;
+            display: inline-block;
+        }
+
+
+
+    </style>
+
+
+
+
 
 
 </head><!-- [Head] end --><!-- [Body] Start -->
@@ -94,7 +134,7 @@
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="https://api.whatsapp.com/send?phone=2349138248126" >Support</a >
+                           href="#" >Support</a >
                     </li>
 
 
@@ -184,8 +224,8 @@
 
         </div>
         <ul class="messages">
-            <li style="color: white" class="other"><a style="color: white"  href="https://api.whatsapp.com/send?phone=2349138248126" target="_blank"><i class="bi bi-whatsapp"> </i> Chat on whatsapp </a></li>
-            <li style="color: white" class="other"><a style="color: white"  href="https://t.me/FADDEDSMS" target="_blank"><i class="bi bi-telegram"> </i> Chat on Telegram</a></li>
+            <li style="color: white" class="other"><a style="color: white"  href=#" target="_blank"><i class="bi bi-whatsapp"> </i> Chat on whatsapp </a></li>
+            <li style="color: white" class="other"><a style="color: white"  href="#" target="_blank"><i class="bi bi-telegram"> </i> Chat on Telegram</a></li>
         </ul>
     </div>
 </div>
@@ -299,6 +339,85 @@
         }
     }
 </script>
+
+
+<script>
+    // Toggle for country dropdown
+    function toggleDropdown() {
+        document.getElementById('dropdown').style.display = 'block';
+    }
+
+    // Toggle for service dropdown
+    function toggleDropdownservice() {
+        document.getElementById('dropdownservice').style.display = 'block';
+    }
+
+    // Filter for country items
+    function filterItems() {
+        const searchInput = document.getElementById('search').value.toLowerCase();
+        const items = document.querySelectorAll('#dropdown .item');
+
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(searchInput)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Filter for service items
+    function filterItemsservice() {
+        const searchInput = document.getElementById('searchservice').value.toLowerCase();
+        const items = document.querySelectorAll('#dropdownservice .item');
+
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(searchInput)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Select country
+    function selectCountry(element) {
+        document.getElementById('search').value = element.textContent;
+        document.getElementById('dropdown').style.display = 'none';
+        document.getElementById('selectedID').value = element.getAttribute('data-id');
+    }
+
+    // Select service
+    function selectService(element) {
+        document.getElementById('searchservice').value = element.textContent;
+        document.getElementById('dropdownservice').style.display = 'none';
+        document.getElementById('serviceID').value = element.getAttribute('data-id');
+    }
+
+    // Close dropdowns if clicked outside
+    document.addEventListener('click', function (event) {
+        const searchContainerCountry = document.querySelector('#search');
+        const searchContainerService = document.querySelector('#searchservice');
+
+        if (!searchContainerCountry.contains(event.target)) {
+            document.getElementById('dropdown').style.display = 'none';
+        }
+
+        if (!searchContainerService.contains(event.target)) {
+            document.getElementById('dropdownservice').style.display = 'none';
+        }
+    });
+</script>
+
+
+<script>function changebrand(presetColor) {
+        removeClassByPrefix(document.querySelector('body'), 'preset-');
+        document.querySelector('body').classList.add(presetColor);
+    }
+
+    localStorage.setItem('layout', 'color-header');</script>
 
 
 </body>

@@ -12,22 +12,29 @@
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
-                    <button
-                        class="btn btn-light-secondary my-3"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"
-                        style="background: #064174"
-                    >
-                        USA SERVICES
-                    </button>
+{{--                    <button--}}
+{{--                        class="btn btn-light-secondary my-3"--}}
+{{--                        type="button"--}}
+{{--                        data-bs-toggle="offcanvas"--}}
+{{--                        data-bs-target="#offcanvasRight"--}}
+{{--                        aria-controls="offcanvasRight"--}}
+{{--                        style="background: #064174"--}}
+{{--                    >--}}
+{{--                        USA SERVICES--}}
+{{--                    </button>--}}
 
 
                     <a class="btn btn-dark border-0" href="/world"
+                       style="background: #064175"
+                    >
+                        SERVER 1
+                    </a>
+
+
+                    <a class="btn btn-dark border-0" href="/cworld"
                        style="background: #fc6507"
                     >
-                        OTHER COUNTRIES SERVICES
+                        SERVER 2
                     </a>
                 </div>
             </div>
@@ -89,7 +96,7 @@
 
                                             <div class="col mr-3">
                                                 @auth
-                                                    <form action="order-usano">
+                                                    <form action="order-usano" method="POST">
                                                         <input hidden name="service" value="{{ $key }}">
                                                         <input hidden name="price" value="{{ $cost }}">
                                                         <input hidden name="cost" value="{{ $innerValue->cost }}">

@@ -38,23 +38,31 @@
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
-                    <button
-                        class="btn btn-light-secondary my-3"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"
-                        style="background: #064174"
-                    >
-                        USA SERVICES
-                    </button>
+
+
+
+
+
+
+
+
+
+
 
 
                     <a class="btn btn-dark border-0" href="/world"
+                       style="background: #064175"
+                    >
+                        SERVER 1
+                    </a>
+
+
+                    <a class="btn btn-dark border-0" href="/cworld"
                        style="background: #fc6507"
                     >
-                        OTHER COUNTRIES SERVICES
+                        SERVER 2
                     </a>
+
 
 
 
@@ -110,7 +118,7 @@
                                                                         <span
                                                                             style="background: orange; border:0px; font-size: 10px"
                                                                             class="btn btn-warning btn-sm">Pending</span>
-                                                                        <a href="cancle-sms?id=<?php echo e($data->id); ?>&delete=1"
+                                                                        <a href="delete-order?id=<?php echo e($data->id); ?>&delete=1"
                                                                            style="background: rgb(168, 0, 14); border:0px; font-size: 10px"
                                                                            class="btn btn-warning btn-sm">Delete</span>
 
@@ -212,7 +220,7 @@
 
                                                                 <div class="col mr-3">
                                                                     <?php if(auth()->guard()->check()): ?>
-                                                                        <form action="order-usano">
+                                                                        <form action="order-usano" method="POST">
                                                                             <input hidden name="service" value="<?php echo e($key); ?>">
                                                                             <input hidden name="price" value="<?php echo e($cost); ?>">
                                                                             <input hidden name="cost" value="<?php echo e($innerValue->cost); ?>">
@@ -289,103 +297,6 @@
                     </div>
 
 
-                    <?php if($product != null): ?>
-                        <div class="d-flex justify-content-center col-xl-12 col-md-12 col-sm-12 p-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-
-                                    <div class="row">
-                                        <p class="text-muted text-center">Service Information</p>
-
-                                        <h5 class="text-center my-2">Amount</h5>
-                                        <h6 class="text-center text-muted my-2 mb-4">Price:
-                                            NGN <?php echo e(number_format($price, 2)); ?></h6>
-
-
-
-
-                                        <h5 class="text-center my-2">Available Nuumbers</h5>
-                                        <h6 class="text-center text-muted my-2 mb-4">
-                                            <?php echo e(number_format($stock, 2)); ?></h6>
-
-                                        <h5 class="text-center text-muted my-2">Success rate: <span
-                                                style="font-size: 30px; color: rgb(63,63,63);"> <?php if($rate < 10): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate < 20): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate < 30): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate < 40): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate < 50): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate < 60): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate < 70): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate < 80): ?>
-                                                    <?php echo e($rate); ?>%
-
-                                                <?php elseif($rate < 90): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php elseif($rate <= 100): ?>
-                                                    <?php echo e($rate); ?>%
-                                                <?php else: ?>
-                                                <?php endif; ?></span></h5>
-                                        <h6></h6>
-
-
-                                        <?php if(Auth::user()->wallet < $price && $stock > 0): ?>
-                                            <a href="fund-wallet" class="btn btn-secondary text-white btn-lg">Fund
-                                                Wallet</a>
-                                        <?php elseif($stock > 0 && Auth::user()->wallet > $price): ?>
-                                            <form action="order_now" method="POST">
-                                                <?php echo csrf_field(); ?>
-
-                                                <input type="text" name="country" hidden value="<?php echo e($count_id ?? null); ?>">
-                                                <input type="text" name="price" hidden value="<?php echo e($price ?? null); ?>">
-                                                <input type="text" name="service" hidden value="<?php echo e($serv ?? null); ?>">
-
-
-                                                <button type="submit"
-                                                        style="border: 0px; background: rgb(63,63,63); color: white;"
-                                                        class="mb-2 btn btn w-100 btn-lg mt-6">Buy Number
-                                                    Now
-                                                </button>
-
-
-                                                <p class="text-muted text-center my-5">
-                                                    At FADDEDSMS, we prioritize quality, ensuring that you receive the
-                                                    highest standard of SMS verifications for all your needs. Our commitment
-                                                    to excellence means we only offer non-VoIP phone numbers, guaranteeing
-                                                    compatibility with any service you require.
-                                                </p>
-
-
-                                            </form>
-                                        <?php else: ?>
-
-                                            <a href="/home" class="btn btn-danger text-white btn-lg">Number not available</a>
-
-                                        <?php endif; ?>
-
-
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
-
-
-
-
-
-
-
 
                 </div>
             </div>
@@ -393,37 +304,8 @@
 
 
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
-            <div class="offcanvas-header">
-
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-
-            <div class="offcanvas-body">
-                <div class="alert alert-success mb-4" role="alert">
-                    <p class="m-0 fw-bold fs-6">
-                        Verification for all countries
-                    </p>
-                </div>
 
 
-
-
-
-
-
-
-
-            </div>
-        </div>
-        <!-- Enable backdrop end --><!-- both scrolling end -->
-
-
-
-        <div class="container technology-block">
-
-
-        </div>
 
     </section>
 

@@ -4,7 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cdf45ff-cf72-4fd5-8d04-690270964b0e" name="Changes" comment="pushhhhhh" />
+    <list default="true" id="3cdf45ff-cf72-4fd5-8d04-690270964b0e" name="Changes" comment="pushhhhhh">
+      <change afterPath="$PROJECT_DIR$/ ," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/10," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bearer ," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CURL_HTTP_VERSION_1_1," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Failed to complete purchase," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GET," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/[" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_cost" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SimController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cost" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/country" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/margin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phone" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rate" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/required|string," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Auth/verify-account-now.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/simworld.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/verify-account.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sms[0]-" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/status" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/views/1966a8d48a161e8ee630e3906b299466.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/views/50e04d7ec40f44d34297ee78f82cb58c.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/views/90198fd459d46c2c9d8dd5a7a694d21d.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/views/bab50739cda3fa2546c1e2727c4acfda.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/views/e53c7814118bec2236a782d10c752234.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/views/fa9333de96df3e80cbdab6ecfd5a1cdb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/text" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/true," afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/type" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Helpers/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Helpers/helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/world.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/world.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/0a1b10c8149e291825e0bd7e70be5905.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/0a1b10c8149e291825e0bd7e70be5905.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/7456f03cf491b871d699ae284cc3acda.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/7456f03cf491b871d699ae284cc3acda.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/99d614c34554e06387f90222073d2d0a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/99d614c34554e06387f90222073d2d0a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/b16d22449c867df6da9b20214523e681.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b16d22449c867df6da9b20214523e681.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/f4640d5309f8978bbbb0f6acdc30378d.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/f4640d5309f8978bbbb0f6acdc30378d.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/f727a46fb727da8402ca17d6ac8ddacc.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/f727a46fb727da8402ca17d6ac8ddacc.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,7 +225,8 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/project/faddedsms",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/project/faddedsms/resources/views",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -257,46 +307,7 @@
       <workItem from="1724420402597" duration="568000" />
       <workItem from="1724575654657" duration="1282000" />
       <workItem from="1727415489533" duration="864000" />
-    </task>
-    <task id="LOCAL-00022" summary="pushhhhhh">
-      <option name="closed" value="true" />
-      <created>1716670135219</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1716670135219</updated>
-    </task>
-    <task id="LOCAL-00023" summary="pushhhhhh">
-      <option name="closed" value="true" />
-      <created>1716751542022</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1716751542022</updated>
-    </task>
-    <task id="LOCAL-00024" summary="pushhhhhh">
-      <option name="closed" value="true" />
-      <created>1716751785429</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1716751785430</updated>
-    </task>
-    <task id="LOCAL-00025" summary="pushhhhhh">
-      <option name="closed" value="true" />
-      <created>1716766424323</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1716766424323</updated>
-    </task>
-    <task id="LOCAL-00026" summary="pushhhhhh">
-      <option name="closed" value="true" />
-      <created>1716766717856</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1716766717856</updated>
+      <workItem from="1727418771106" duration="14808000" />
     </task>
     <task id="LOCAL-00027" summary="pushhhhhh">
       <option name="closed" value="true" />
@@ -650,7 +661,47 @@
       <option name="project" value="LOCAL" />
       <updated>1724575733791</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="pushhhhhh">
+      <option name="closed" value="true" />
+      <created>1727418777360</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1727418777361</updated>
+    </task>
+    <task id="LOCAL-00072" summary="pushhhhhh">
+      <option name="closed" value="true" />
+      <created>1727419013909</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1727419013909</updated>
+    </task>
+    <task id="LOCAL-00073" summary="pushhhhhh">
+      <option name="closed" value="true" />
+      <created>1727421898054</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1727421898054</updated>
+    </task>
+    <task id="LOCAL-00074" summary="pushhhhhh">
+      <option name="closed" value="true" />
+      <created>1727422095876</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1727422095876</updated>
+    </task>
+    <task id="LOCAL-00075" summary="pushhhhhh">
+      <option name="closed" value="true" />
+      <created>1727534068691</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1727534068691</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,13 +720,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/home.blade.php</url>
-          <line>460</line>
+          <line>342</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/orders.blade.php</url>
-          <line>162</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/layout/main.blade.php</url>
@@ -684,12 +730,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/orders.blade.php</url>
-          <line>35</line>
+          <line>146</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
+          <line>970</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
-          <line>69</line>
+          <line>85</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\HomeController" />
             <option name="methodName" value="order_now" />
@@ -698,7 +749,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
-          <line>442</line>
+          <line>321</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\HomeController" />
             <option name="methodName" value="fund_wallet" />
@@ -707,7 +758,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
-          <line>950</line>
+          <line>700</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\HomeController" />
             <option name="methodName" value="reset_password" />
@@ -716,7 +767,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
-          <line>1253</line>
+          <line>794</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\HomeController" />
             <option name="methodName" value="webhook" />
@@ -725,7 +776,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
-          <line>1325</line>
+          <line>872</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\HomeController" />
             <option name="methodName" value="about_us" />
@@ -734,7 +785,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/WorldNumberController.php</url>
-          <line>241</line>
+          <line>243</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\WorldNumberController" />
             <option name="methodName" value="webhook" />
@@ -743,7 +794,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/WorldNumberController.php</url>
-          <line>255</line>
+          <line>257</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\WorldNumberController" />
             <option name="methodName" value="order_now" />
@@ -752,7 +803,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
-          <line>44</line>
+          <line>33</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\HomeController" />
             <option name="methodName" value="home" />
@@ -761,7 +812,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
-          <line>557</line>
+          <line>422</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\HomeController" />
             <option name="methodName" value="fund_manual_now" />

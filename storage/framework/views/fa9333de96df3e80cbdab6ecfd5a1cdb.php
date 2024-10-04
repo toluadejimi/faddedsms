@@ -6,15 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="{{ url('') }}/public/concept/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/libs/css/style.css">
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/vendor/charts/morris-bundle/morris.css">
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/vendor/charts/c3charts/c3.css">
-    <link rel="stylesheet" href="{{ url('') }}/public/concept/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="<?php echo e(url('')); ?>/public/concept/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/libs/css/style.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/public/concept/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
     <title>Log Marketplace - BRST LOG SITE</title>
 </head>
 
@@ -37,7 +37,7 @@
 
 
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url('') }}/public/concept/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo e(url('')); ?>/public/concept/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name">Admin </h5>
@@ -106,25 +106,27 @@
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
 
-                     @if ($errors->any())
+                     <?php if($errors->any()): ?>
                         <div class="alert alert-danger">
                             <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
-                        @endif
-                        @if (session()->has('message'))
+                        <?php endif; ?>
+                        <?php if(session()->has('message')): ?>
                         <div class="alert alert-success">
-                            {{ session()->get('message') }}
+                            <?php echo e(session()->get('message')); ?>
+
                         </div>
-                        @endif
-                        @if (session()->has('error'))
+                        <?php endif; ?>
+                        <?php if(session()->has('error')): ?>
                         <div class="alert alert-danger">
-                            {{ session()->get('error') }}
+                            <?php echo e(session()->get('error')); ?>
+
                         </div>
-                        @endif
+                        <?php endif; ?>
 
 
                     <div class="row">
@@ -155,7 +157,8 @@
                                         <h5 class="text-muted">All User</h5>
                                         <div class="metric-value d-inline-block">
 
-                                            {{ number_format($user) }}
+                                            <?php echo e(number_format($user)); ?>
+
 
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
@@ -172,7 +175,8 @@
                                         <h5 class="text-muted">Total In</h5>
                                         <div class="metric-value d-inline-block">
 
-                                           NGN {{ number_format($total_in) }}
+                                           NGN <?php echo e(number_format($total_in)); ?>
+
 
 
                                         </div>
@@ -187,7 +191,8 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Out</h5>
                                         <div class="metric-value d-inline-block">
-                                         NGN {{ number_format($total_out) }}
+                                         NGN <?php echo e(number_format($total_out)); ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +206,8 @@
                                         <h5 class="text-muted"> All Verifed Text</h5>
                                         <div class="metric-value d-inline-block">
 
-                                         {{ number_format($total_verified_message) }}
+                                         <?php echo e(number_format($total_verified_message)); ?>
+
 
 
                                         </div>
@@ -244,58 +250,59 @@
                                                 </thead>
                                                 <tbody>
 
-                                                @forelse ($verification as $data)
+                                                <?php $__empty_1 = true; $__currentLoopData = $verification; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
                                                     <tr>
 
-                                                        <td><a href="view-user?id={{ $data->user->id ?? "ID" }}">{{ $data->user->username ?? "username" }}</a> </td>
-                                                        <td>{{ $data->order_id }} </td>
-                                                        <td>{{ $data->country }} </td>
-                                                        @if($data->type == 3)
+                                                        <td><a href="view-user?id=<?php echo e($data->user->id ?? "ID"); ?>"><?php echo e($data->user->username ?? "username"); ?></a> </td>
+                                                        <td><?php echo e($data->order_id); ?> </td>
+                                                        <td><?php echo e($data->country); ?> </td>
+                                                        <?php if($data->type == 3): ?>
                                                             <td> 3SIM </td>
-                                                        @elseif($data->type == 2)
+                                                        <?php elseif($data->type == 2): ?>
                                                             <td> SMSPOOL </td>
-                                                        @else
+                                                        <?php else: ?>
                                                             <td> Diasy </td>
-                                                        @endif
-                                                        <td>{{ $data->service }} </td>
-                                                        <td>{{ $data->order_id }} </td>
+                                                        <?php endif; ?>
+                                                        <td><?php echo e($data->service); ?> </td>
+                                                        <td><?php echo e($data->order_id); ?> </td>
 
 
 
-                                                        <td>{{ $data->sms }} </td>
-                                                        <td>{{ number_format($data->cost, 2) }} </td>
-                                                        @if($data->status == 2)
+                                                        <td><?php echo e($data->sms); ?> </td>
+                                                        <td><?php echo e(number_format($data->cost, 2)); ?> </td>
+                                                        <?php if($data->status == 2): ?>
                                                             <td>
                                                             <span
                                                                 class="badge badge-pill badge-success">Successful</span>
                                                             </td>
-                                                        @else
+                                                        <?php else: ?>
                                                             <td>
                                                                 <span class="badge badge-pill badge-warning">Pending</span>
 
                                                             </td>
-                                                        @endif
+                                                        <?php endif; ?>
 
 
-                                                        <td>{{ date('d/m/y', strtotime($data->created_at)) }} </td>
-                                                        <td>{{ date('h:i', strtotime($data->created_at)) }} </td>
+                                                        <td><?php echo e(date('d/m/y', strtotime($data->created_at))); ?> </td>
+                                                        <td><?php echo e(date('h:i', strtotime($data->created_at))); ?> </td>
 
 
                                                     </tr>
 
-                                                @empty
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                                                     <tr>
                                                         <td> No Record Found</td>
                                                     </tr>
 
-                                                @endforelse
+                                                <?php endif; ?>
 
 
                                                 </tbody>
 
-                                                {{ $verification->links() }}
+                                                <?php echo e($verification->links()); ?>
+
 
 
                                             </table>
@@ -315,9 +322,9 @@
                                         <div class="col-12 p-3">
 
                                             <form method="post" action="update-smspool-rate">
-                                                @csrf
+                                                <?php echo csrf_field(); ?>
                                                 <label>SMS POOL RATE</label>
-                                                <input class="form-control2 text-dark" name="rate" value="{{ $usdtongn }}">
+                                                <input class="form-control2 text-dark" name="rate" value="<?php echo e($usdtongn); ?>">
 
                                                 <button type="submit" class="btn btn-primary">Update Rate</button>
 
@@ -328,9 +335,9 @@
 
                                         <div class="col-12 p-3">
                                             <form method="post" action="update-sim-cost">
-                                                @csrf
+                                                <?php echo csrf_field(); ?>
                                                 <label>SMS POOL COST</label>
-                                                <input class="form-control2 text-dark" name="cost" value="{{ $margin }}">
+                                                <input class="form-control2 text-dark" name="cost" value="<?php echo e($margin); ?>">
 
                                                 <button type="submit" class="btn btn-primary">Update Cost</button>
                                             </form>
@@ -341,9 +348,9 @@
 
                                         <div class="col-12 p-3">
                                             <form method="post" action="update-sim-rate">
-                                                @csrf
+                                                <?php echo csrf_field(); ?>
                                                 <label>SIM RATE</label>
-                                                <input class="form-control2 text-dark" name="rate" value="{{ $simrate}}">
+                                                <input class="form-control2 text-dark" name="rate" value="<?php echo e($simrate); ?>">
                                                 <button type="submit" class="btn btn-primary">Update Rate</button>
                                             </form>
 
@@ -352,9 +359,9 @@
 
                                         <div class="col-12 p-3">
                                             <form method="post" action="update-sim-cost">
-                                                @csrf
+                                                <?php echo csrf_field(); ?>
                                                 <label>SIM COST</label>
-                                                <input class="form-control2 text-dark" name="cost" value="{{ $simcost }}">
+                                                <input class="form-control2 text-dark" name="cost" value="<?php echo e($simcost); ?>">
 
                                                 <button type="submit" class="btn btn-primary">Update Cost</button>
                                             </form>
@@ -387,63 +394,64 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @forelse ($transaction as $data)
+                                                <?php $__empty_1 = true; $__currentLoopData = $transaction; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
                                                     <tr>
-                                                        <td>{{ $data->ref_id }} </td>
-                                                        <td>{{ $data->user->username }} </td>
-                                                        @if($data->type == 2)
+                                                        <td><?php echo e($data->ref_id); ?> </td>
+                                                        <td><?php echo e($data->user->username); ?> </td>
+                                                        <?php if($data->type == 2): ?>
                                                             <td><span class="badge badge-success">Credit</span>
                                                             </td>
-                                                        @else
+                                                        <?php else: ?>
                                                             <td><span class="badge badge-danger">Debit</span>
                                                             </td>
-                                                        @endif
-                                                        <td>{{ number_format($data->amount, 2) }} </td>
-                                                        @if($data->status == 1)
+                                                        <?php endif; ?>
+                                                        <td><?php echo e(number_format($data->amount, 2)); ?> </td>
+                                                        <?php if($data->status == 1): ?>
                                                             <td>
                                                             <span
                                                                 class="badge badge-pill badge-warning">Intitated</span>
                                                             </td>
 
-                                                        @elseif($data->status == 0)
+                                                        <?php elseif($data->status == 0): ?>
                                                             <td>
                                                                 <span class="badge badge-pill badge-warning">Pending</span>
                                                             </td>
 
-                                                        @elseif($data->status == 3)
+                                                        <?php elseif($data->status == 3): ?>
                                                             <td>
                                                                 <span class="badge badge-pill badge-danger">Cancled</span>
                                                             </td>
 
-                                                        @elseif($data->status == 4)
+                                                        <?php elseif($data->status == 4): ?>
                                                             <td>
                                                                 <span class="badge badge-pill badge-success">Resolved</span>
                                                             </td>
 
-                                                        @else
+                                                        <?php else: ?>
                                                             <td>
                                                             <span
                                                                 class="badge badge-pill badge-success">Completed</span>
 
                                                             </td>
-                                                        @endif
-                                                        <td>{{ date('d/m/y', strtotime($data->created_at)) }} </td>
-                                                        <td>{{ date('h:i', strtotime($data->created_at)) }} </td>
+                                                        <?php endif; ?>
+                                                        <td><?php echo e(date('d/m/y', strtotime($data->created_at))); ?> </td>
+                                                        <td><?php echo e(date('h:i', strtotime($data->created_at))); ?> </td>
                                                     </tr>
 
-                                                @empty
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                                                     <tr>
                                                         <td> No Record Found</td>
                                                     </tr>
 
-                                                @endforelse
+                                                <?php endif; ?>
                                                 </tbody>
 
 
                                             </table>
-                                            {{ $transaction->links() }}
+                                            <?php echo e($transaction->links()); ?>
+
 
                                         </div>
                                     </div>
@@ -480,25 +488,26 @@
 
     </div>
 
-    <script src="{{ url('') }}/public/concept/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
-    <script src="{{ url('') }}/public/concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
-    <script src="{{ url('') }}/public/concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
-    <script src="{{ url('') }}/public/concept/assets/libs/js/main-js.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/libs/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="{{ url('') }}/public/concept/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
     <!-- sparkline js -->
-    <script src="{{ url('') }}/public/concept/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
-    <script src="{{ url('') }}/public/concept/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="{{ url('') }}/public/concept/assets/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="{{ url('') }}/public/concept/assets/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="{{ url('') }}/public/concept/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="{{ url('') }}/public/concept/assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="{{ url('') }}/public/concept/assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="<?php echo e(url('')); ?>/public/concept/assets/libs/js/dashboard-ecommerce.js"></script>
 </body>
 
 </html>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/faddedsms/resources/views/admin-dashboard.blade.php ENDPATH**/ ?>

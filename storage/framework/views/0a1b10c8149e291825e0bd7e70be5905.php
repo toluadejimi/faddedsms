@@ -74,8 +74,8 @@
                 <div class="flex md:hidden items-center">
                     <button>
                         <a class="block rounded-md border py-2 px-3 text-center text-sm font-semibold text-white focus:ring-2 focus:ring-offset-2 focus:outline-none shadow-sm whitespace-nowrap disabled:bg-gray-300 disabled:hover:bg-gray-300 disabled:border-gray-300 disabled:text-gray-500 disabled:cursor-default border-sky-700 bg-sky-700 hover:bg-sky-800 focus:ring-sky-600 inline-flex"
-                           href="register.html">
-                            Sign up
+                           href="/register">
+                            Get Started
                         </a>
                     </button>
                 </div>
@@ -86,7 +86,7 @@
                                                                                                class="whitespace-nowrap text-base font-medium text-slate-700 hover:text-slate-900">Sign
                         in</a>
                     <a class="block rounded-md border py-2 px-3 text-center text-sm font-semibold text-white focus:ring-2 focus:ring-offset-2 focus:outline-none shadow-sm whitespace-nowrap disabled:bg-gray-300 disabled:hover:bg-gray-300 disabled:border-gray-300 disabled:text-gray-500 disabled:cursor-default border-sky-700 bg-sky-700 hover:bg-sky-800 focus:ring-sky-600 inline-flex"
-                       href="register.html">
+                       href="/register">
                         Sign up
                     </a></div>
             </div>
@@ -116,9 +116,9 @@
                 <span class="relative">Use Ours.</span></span></h1>
                 <div class="flex justify-center gap-x-6"><a
                         class="w-24 group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300"
-                        href="login.html">Sign In</a>
+                        href="/login">Sign In</a>
                     <a class="w-24 group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
-                       href="register.html">Sign Up</a></div>
+                       href="/register">Sign Up</a></div>
             </div>
             <div class="flex flex-col sm:gap-8 gap-6 mt-36 lg:mt-44">
                 <div class="flex flex-col gap-4 items-center justify-center"><span class="text-slate-900">Receive SMS & OTP From 900+ Services</span>
@@ -398,7 +398,7 @@
                         class="font-display text-3xl tracking-tight text-white sm:text-4xl">Get started today</h2>
                     <p class="mt-4 text-lg tracking-tight text-white">Sign-Up is quick, free, and easy. We respect your
                         privacy. Your account will be ready to use within minutes.</p>
-                    <a href="register.html"
+                    <a href="/register"
                        class="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-10">
                         Sign Up Now
                     </a></div>

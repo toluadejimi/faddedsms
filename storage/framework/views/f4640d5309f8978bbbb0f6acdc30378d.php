@@ -11,27 +11,139 @@
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
-                    <button
-                        class="btn btn-light-secondary my-3"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"
-                        style="background: #064174"
-                    >
-                        USA SERVICES
-                    </button>
+
+
+
+
+
+
+
+
+
+
+
 
 
                     <a class="btn btn-dark border-0" href="/world"
+                       style="background: #064175"
+                    >
+                        SERVER 1
+                    </a>
+
+
+                    <a class="btn btn-dark border-0" href="/cworld"
                        style="background: #fc6507"
                     >
-                        OTHER COUNTRIES SERVICES
+                        SERVER 2
                     </a>
+
 
                 </div>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col-md-6 col-xl-6 col-sm-12">
+                <div class="card">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+                        <div class="offcanvas-body">
+
+
+
+                            <div class="">
+
+                                <div class="p-2 col-lg-6">
+                                    <input type="text" id="searchInput" class="form-control"
+                                           placeholder="Search for a service..." onkeyup="filterServices()">
+                                </div>
+
+
+                                <div class="row my-3 p-1 text-white"
+                                     style="background: #dedede; border-radius: 10px; font-size: 10px; border-radius: 12px">
+                                    <div class="col-5">
+                                        <h5 class="mt-2">Services</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="mt-2">Price</h5>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div style="height:700px; width:100%; overflow-y: scroll;" class="p-2">
+
+
+                                <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="row service-row text-white">
+                                        <?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $innerKey => $innerValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div style="font-size: 11px" class="col-5 service-name d-flex justify-content-start">
+                                                🇺🇸 <?php echo e($innerValue->name); ?>
+
+                                            </div>
+
+                                            <div style="font-size: 11px" class="col">
+                                                <?php $cost = $get_rate * $innerValue->cost + $margin  ?>
+                                                <strong>N<?php echo e(number_format($cost, 2)); ?></strong>
+                                            </div>
+
+                                            <div style="font-size: 11px" class="col">
+
+                                            </div>
+
+
+                                            <div class="col mr-3">
+                                                <?php if(auth()->guard()->check()): ?>
+                                                    <form action="order-usano" method="POST">
+                                                        <input hidden name="service" value="<?php echo e($key); ?>">
+                                                        <input hidden name="price" value="<?php echo e($cost); ?>">
+                                                        <input hidden name="cost" value="<?php echo e($innerValue->cost); ?>">
+                                                        <input hidden name="name" value="<?php echo e($innerValue->name); ?>">
+                                                        <button class="myButton" style="border: 0px; background: transparent" onclick="hideButton(this)"><i class="fa fa-shopping-bag"></i></button>
+                                                    </form>
+                                                <?php else: ?>
+
+                                                    <a class=""
+                                                       href="/login">
+                                                        <i class="fa fa-lock text-dark"> Login</i>
+                                                    </a>
+                                                <?php endif; ?>
+
+
+                                                <script>
+                                                    function hideButton(link) {
+                                                        // Hide the clicked link
+                                                        link.style.display = 'none';
+
+                                                        setTimeout(function () {
+                                                            link.style.display = 'inline'; // or 'block' depending on your layout
+                                                        }, 5000); // 5 seconds
+                                                    }
+                                                </script>
+
+
+                                            </div>
+
+
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
 
 
 
@@ -96,7 +208,7 @@
                                                     </td>
 
                                                     <?php if($data->sms != null): ?>
-                                                        <td style="font-size: 12px; color: white"><?php echo e($data->sms); ?>
+                                                        <td style="font-size: 12px; color: #ffffff"><?php echo e($data->sms); ?>
 
                                                         </td>
                                                     <?php else: ?>
@@ -137,7 +249,7 @@
                                                                 aspect-ratio: 1;
                                                                 border-radius: 50%;
                                                                 border: 1px solid;
-                                                                border-color: #000 #0000;
+                                                                border-color: #fc6507 #0000;
                                                                 animation: l1 1s infinite;
                                                             }
 
@@ -152,7 +264,7 @@
                                                             <div id="l1" class="justify-content-start">
                                                             </div>
                                                             <div>
-                                                                <input style=" " class="border-0"
+                                                                <input style="background: none;" class="border-0 "
                                                                        id="response-input<?php echo e($data->id); ?>">
                                                             </div>
 
@@ -198,7 +310,7 @@
                                                             <span
                                                                 style="background: orange; border:0px; font-size: 10px"
                                                                 class="btn btn-warning btn-sm">Pending</span>
-                                                            <a href="cancle-sms?id=<?php echo e($data->id); ?>&delete=1"
+                                                            <a href="delete-order?id=<?php echo e($data->id); ?>&delete=1"
                                                                style="background: rgb(168, 0, 14); border:0px; font-size: 10px"
                                                                onclick="hideButtondelete(this)"
                                                                class="btn btn-warning btn-sm">Delete</span>
@@ -233,7 +345,39 @@
 
             </div>
         </div>
+
+        <script>
+            window.onload = function() {
+                setInterval(function() {
+                    location.reload();
+                }, 40000);
+            };
+        </script>
+
+
+        <script>
+            function filterServices() {
+                var input, filter, serviceRows, serviceNames, i, txtValue;
+                input = document.getElementById("searchInput");
+                filter = input.value.toUpperCase();
+                serviceRows = document.getElementsByClassName("service-row");
+                for (i = 0; i < serviceRows.length; i++) {
+                    serviceNames = serviceRows[i].getElementsByClassName("service-name");
+                    txtValue = serviceNames[0].textContent || serviceNames[0].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        serviceRows[i].style.display = "";
+                    } else {
+                        serviceRows[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+
+
     </section>
+
+
+
 
 <?php $__env->stopSection(); ?>
 

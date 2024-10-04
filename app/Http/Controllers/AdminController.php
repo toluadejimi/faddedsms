@@ -114,6 +114,8 @@ class AdminController extends Controller
         $data['margin'] = Setting::where('id', 1)->first()->margin;
         $data['verification'] = Verification::latest()->paginate(10);
         $data['total_verification'] = Verification::where('status', 2)->count();
+        $data['simrate'] = Setting::where('id', 3)->first()->rate;
+        $data['simcost'] = Setting::where('id', 3)->first()->margin;
 
 
 
