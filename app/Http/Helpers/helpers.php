@@ -81,7 +81,7 @@ function send_notification($message)
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            // CURLOPT_URL => 'https://api.telegram.org/bot7059926156:AAHrb7Kt_uqNlSjblpQuf2xbgwIwggZxJng/sendMessage?chat_id=986615350',
+             CURLOPT_URL => 'https://api.telegram.org/bot7729529581:AAEouUbQN7G2sVSQnH4D77k8H1TjT8t4Djw/sendMessage?chat_id=986615350',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -90,7 +90,7 @@ function send_notification($message)
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'chat_id' => "986615350",
+                'chat_id' => "7174457646",
                 'text' => $message,
 
             ),
