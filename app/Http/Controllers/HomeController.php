@@ -1069,7 +1069,7 @@ class HomeController extends Controller
         $ip = $request->ip();
 
 
-        if ($ip == $ipb || $ip == $ipa) {
+        if ($ip == $ipb || $ip == $ipa || $request->fund == "fund") {
 
             $get_user = User::where('email', $request->email)->first() ?? null;
 
