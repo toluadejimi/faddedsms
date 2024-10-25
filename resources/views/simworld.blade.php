@@ -7,26 +7,16 @@
                 <div class="col-md-8 col-xl-6">
                     <h4 class="mb-3" style="color: #fc6507">Hi {{ Auth::user()->username }} 👋</h4>
                     <p class="mb-0">
-                        <a href="fund-wallet" class="btn btn-dark mb-4" >NGN {{ number_format(Auth::user()->wallet, 2) }}</a>
+                        <a href="fund-wallet"
+                           class="btn btn-dark mb-4">NGN {{ number_format(Auth::user()->wallet, 2) }}</a>
                     </p>
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
 
 
+                    @include('servermenu')
 
-                    <a class="btn btn-dark border-0" href="/world"
-                       style="background: #064175"
-                    >
-                        SERVER 1
-                    </a>
-
-
-                    <a class="btn btn-dark border-0" href="/cworld"
-                       style="background: #fc6507"
-                    >
-                        SERVER 2
-                    </a>
 
                 </div>
             </div>
@@ -36,10 +26,10 @@
         <div class="row">
             <div class="col-md-6 col-xl-6 col-sm-12">
                 <div class="card">
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight"
+                         aria-labelledby="offcanvasRightLabel">
 
                         <div class="offcanvas-body">
-
 
 
                             <div class="">
@@ -70,7 +60,8 @@
                                 @foreach ($services as $key => $value)
                                     <div class="row service-row text-white">
                                         @foreach ($value as $innerKey => $innerValue)
-                                            <div style="font-size: 11px" class="col-5 service-name d-flex justify-content-start">
+                                            <div style="font-size: 11px"
+                                                 class="col-5 service-name d-flex justify-content-start">
                                                 🇺🇸 {{ $innerValue->name }}
                                             </div>
 
@@ -91,7 +82,10 @@
                                                         <input hidden name="price" value="{{ $cost }}">
                                                         <input hidden name="cost" value="{{ $innerValue->cost }}">
                                                         <input hidden name="name" value="{{ $innerValue->name }}">
-                                                        <button class="myButton" style="border: 0px; background: transparent" onclick="hideButton(this)"><i class="fa fa-shopping-bag"></i></button>
+                                                        <button class="myButton"
+                                                                style="border: 0px; background: transparent"
+                                                                onclick="hideButton(this)"><i
+                                                                class="fa fa-shopping-bag"></i></button>
                                                     </form>
                                                 @else
 
@@ -116,7 +110,6 @@
 
                                             </div>
 
-
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -128,18 +121,14 @@
                     </div>
 
 
-
                 </div>
             </div>
         </div>
 
 
-
-
-
         <div class="container technology-block">
             <div class="col-lg-12 col-sm-12 d-flex justify-content-center">
-                <div class="card border-0 mb-5 rounded-20" style="background: #064174; color: #ffffff">
+                <div class="card border-0 mb-5 rounded-20" style="background: #fc6508; color: #ffffff">
                     <div class="card-body">
 
                         <div class="card-header d-flex justify-content-center mb-3">
@@ -168,11 +157,8 @@
                         @endif
 
 
-
-
-
-                        <div class="col-xl-12 col-md-12 col-sm-12  justify-center" >
-                            <div class="card" style="background: #064174; color: #ffffff">
+                        <div class="col-xl-12 col-md-12 col-sm-12  justify-center">
+                            <div class="card" style="background: #fc6508; color: #ffffff">
                                 <div class="card-body">
 
 
@@ -192,68 +178,68 @@
                                     <div class="mt-5" id="responseData"></div>
 
 
-                                <script>
-                                    var countries = @json($countries);
-                                    var currentData = {}; // Holds the raw API response data
+                                    <script>
+                                        var countries = @json($countries);
+                                        var currentData = {}; // Holds the raw API response data
 
-                                    $(document).ready(function () {
-                                        $('#filterSearch').hide();
+                                        $(document).ready(function () {
+                                            $('#filterSearch').hide();
 
-                                        $('#countrySearch').on('input', function () {
-                                            let searchValue = $(this).val().toLowerCase();
-                                            let matchedCountries = '';
+                                            $('#countrySearch').on('input', function () {
+                                                let searchValue = $(this).val().toLowerCase();
+                                                let matchedCountries = '';
 
-                                            if (searchValue) {
-                                                for (let key in countries) {
-                                                    if (countries[key].toLowerCase().includes(searchValue)) {
-                                                        matchedCountries += `<li style="background: #090909" class="list-group-item" data-country="${key}">${countries[key]}</li>`;
+                                                if (searchValue) {
+                                                    for (let key in countries) {
+                                                        if (countries[key].toLowerCase().includes(searchValue)) {
+                                                            matchedCountries += `<li style="background: #090909" class="list-group-item" data-country="${key}">${countries[key]}</li>`;
+                                                        }
                                                     }
-                                                }
-                                                $('#countryList').html(matchedCountries).show();
-                                            } else {
-                                                $('#countryList').hide();
-                                            }
-                                        });
-
-                                        // When a country is clicked, trigger an AJAX request
-                                        $('#countryList').on('click', 'li', function () {
-                                            let country = $(this).data('country');
-                                            $('#countrySearch').val($(this).text());
-                                            $('#countryList').hide();
-
-                                            // AJAX request to get country-specific data
-                                            $.ajax({
-                                                url: `/proxy/prices?country=${country}`,
-                                                type: 'GET',
-                                                success: function (response) {
-                                                    currentData = response; // Save data for filtering later
-                                                    let output = generateCards(response);
-                                                    $('#responseData').html(output);
-                                                    $('#filterSearch').show();
-                                                },
-                                                error: function (error) {
-                                                    console.log(error);
-                                                    $('#responseData').html('<p class="text-danger">Failed to retrieve data.</p>');
+                                                    $('#countryList').html(matchedCountries).show();
+                                                } else {
+                                                    $('#countryList').hide();
                                                 }
                                             });
-                                        });
 
-                                        // Function to generate card HTML from data
-                                        function generateCards(data) {
-                                            let output = '';
-                                            for (let key in data) {
-                                                output += `<h6>${key.toUpperCase()}</h6>`;
-                                                for (let providerId in data[key]) {
-                                                    for (let provider in data[key][providerId]) {
-                                                        let providerData = data[key][providerId][provider];
-                                                        let multipliedCost = providerData.cost * {{$rate}} + {{$margin}};
-                                                        let formattedMultipliedCost = multipliedCost.toLocaleString('en-US', {
-                                                            style: 'currency',
-                                                            currency: 'NGN'
-                                                        });
+                                            // When a country is clicked, trigger an AJAX request
+                                            $('#countryList').on('click', 'li', function () {
+                                                let country = $(this).data('country');
+                                                $('#countrySearch').val($(this).text());
+                                                $('#countryList').hide();
+
+                                                // AJAX request to get country-specific data
+                                                $.ajax({
+                                                    url: `/proxy/prices?country=${country}`,
+                                                    type: 'GET',
+                                                    success: function (response) {
+                                                        currentData = response; // Save data for filtering later
+                                                        let output = generateCards(response);
+                                                        $('#responseData').html(output);
+                                                        $('#filterSearch').show();
+                                                    },
+                                                    error: function (error) {
+                                                        console.log(error);
+                                                        $('#responseData').html('<p class="text-danger">Failed to retrieve data.</p>');
+                                                    }
+                                                });
+                                            });
+
+                                            // Function to generate card HTML from data
+                                            function generateCards(data) {
+                                                let output = '';
+                                                for (let key in data) {
+                                                    output += `<h6>${key.toUpperCase()}</h6>`;
+                                                    for (let providerId in data[key]) {
+                                                        for (let provider in data[key][providerId]) {
+                                                            let providerData = data[key][providerId][provider];
+                                                            let multipliedCost = providerData.cost * {{$rate}} + {{$margin}};
+                                                            let formattedMultipliedCost = multipliedCost.toLocaleString('en-US', {
+                                                                style: 'currency',
+                                                                currency: 'NGN'
+                                                            });
 
 
-                                                        output += `<div class="card mb-3 operator-card" data-country="${key}" data-operator="${provider}" data-product="${providerId}" data-count="${providerData.count}">
+                                                            output += `<div class="card mb-3 operator-card" data-country="${key}" data-operator="${provider}" data-product="${providerId}" data-count="${providerData.count}">
                                                             <div class="card-body">
                                                                    <div class="row">
                                                                     <div class="col-6 d-flex justify-content-start">
@@ -277,81 +263,81 @@
                                                     </div>`;
 
 
-                                                    }
-                                                }
-                                            }
-                                            return output;
-                                        }
-
-                                        // Search within the loaded results
-                                        $('#filterSearchInput').on('input', function () {
-                                            let searchValue = $(this).val().toLowerCase();
-                                            let filteredData = {};
-
-                                            // Filter data based on the operator name or provider ID
-                                            for (let key in currentData) {
-                                                for (let providerId in currentData[key]) {
-                                                    for (let provider in currentData[key][providerId]) {
-                                                        if (provider.toLowerCase().includes(searchValue) || providerId.toLowerCase().includes(searchValue)) {
-                                                            if (!filteredData[key]) filteredData[key] = {};
-                                                            filteredData[key][providerId] = filteredData[key][providerId] || {};
-                                                            filteredData[key][providerId][provider] = currentData[key][providerId][provider];
                                                         }
                                                     }
                                                 }
+                                                return output;
                                             }
 
-                                            // Update results
-                                            let output = generateCards(filteredData);
-                                            $('#responseData').html(output);
-                                        });
+                                            // Search within the loaded results
+                                            $('#filterSearchInput').on('input', function () {
+                                                let searchValue = $(this).val().toLowerCase();
+                                                let filteredData = {};
 
-                                        // When an operator is clicked, send a request to the backend controller
-                                        $('#responseData').on('click', '.operator-card', function () {
-                                            let country = $(this).data('country');
-                                            let operator = $(this).data('operator');
-                                            let product = $(this).data('product');
-                                            let count = $(this).data('count');
-
-
-                                            // Send to backend
-                                            $.ajax({
-                                                url: `/buy-csms`,
-                                                type: 'POST',
-                                                data: {
-                                                    country: country,
-                                                    operator: operator,
-                                                    product: product,
-                                                    count: count,
-                                                    _token: '{{ csrf_token() }}' // Include CSRF token for security
-                                                },
-
-
-                                                success: function (response) {
-
-                                                    if (response === "2") {
-                                                        alert('Verification Not Available.');
-                                                    } else if (response === "4") {
-                                                        window.location.href = '/orders'; // Modify the URL as needed
-                                                    } else if (response === "9") {
-                                                        window.location.href = '/fund-wallet'; // Modify the URL as needed
-                                                    } else if (response === "0") {
-                                                        alert('Verification Not Available.');
-                                                    }else {
-                                                        if (response.code === 200) {
-                                                            var id =response.id;
-                                                            window.location.href = '/orders?id=' + id; // Modify the URL as needed
+                                                // Filter data based on the operator name or provider ID
+                                                for (let key in currentData) {
+                                                    for (let providerId in currentData[key]) {
+                                                        for (let provider in currentData[key][providerId]) {
+                                                            if (provider.toLowerCase().includes(searchValue) || providerId.toLowerCase().includes(searchValue)) {
+                                                                if (!filteredData[key]) filteredData[key] = {};
+                                                                filteredData[key][providerId] = filteredData[key][providerId] || {};
+                                                                filteredData[key][providerId][provider] = currentData[key][providerId][provider];
+                                                            }
                                                         }
                                                     }
-                                                },
-                                                error: function (error) {
-                                                    console.log(error);
-                                                    alert('Failed to complete purchase.');
                                                 }
+
+                                                // Update results
+                                                let output = generateCards(filteredData);
+                                                $('#responseData').html(output);
+                                            });
+
+                                            // When an operator is clicked, send a request to the backend controller
+                                            $('#responseData').on('click', '.operator-card', function () {
+                                                let country = $(this).data('country');
+                                                let operator = $(this).data('operator');
+                                                let product = $(this).data('product');
+                                                let count = $(this).data('count');
+
+
+                                                // Send to backend
+                                                $.ajax({
+                                                    url: `/buy-csms`,
+                                                    type: 'POST',
+                                                    data: {
+                                                        country: country,
+                                                        operator: operator,
+                                                        product: product,
+                                                        count: count,
+                                                        _token: '{{ csrf_token() }}' // Include CSRF token for security
+                                                    },
+
+
+                                                    success: function (response) {
+
+                                                        if (response === "2") {
+                                                            alert('Verification Not Available.');
+                                                        } else if (response === "4") {
+                                                            window.location.href = '/orders'; // Modify the URL as needed
+                                                        } else if (response === "9") {
+                                                            window.location.href = '/fund-wallet'; // Modify the URL as needed
+                                                        } else if (response === "0") {
+                                                            alert('Verification Not Available.');
+                                                        } else {
+                                                            if (response.code === 200) {
+                                                                var id = response.id;
+                                                                window.location.href = '/orders?id=' + id; // Modify the URL as needed
+                                                            }
+                                                        }
+                                                    },
+                                                    error: function (error) {
+                                                        console.log(error);
+                                                        alert('Failed to complete purchase.');
+                                                    }
+                                                });
                                             });
                                         });
-                                    });
-                                </script>
+                                    </script>
 
 
                                 </div>
@@ -366,8 +352,6 @@
 
             </div>
         </div>
-
-
 
 
         <script>
@@ -387,7 +371,6 @@
                 }
             }
         </script>
-
 
 
         <script src="/livewire/livewire.js?id=90730a3b0e7144480175" data-turbo-eval="false"
@@ -453,8 +436,5 @@
 
 
     </section>
-
-
-
 
 @endsection

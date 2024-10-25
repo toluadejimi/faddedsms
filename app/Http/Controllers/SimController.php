@@ -254,8 +254,6 @@ class SimController extends Controller
     public function admin_delete_sms(request $request)
     {
 
-
-
         $token = env('SIMTOKEN');
         $ch = curl_init();
         $id = Verification::where('id', $request->id)->first()->order_id;

@@ -877,3 +877,219 @@ function get_s_product_cost($operator, $country, $product)
 
 }
 
+
+function get_viop_services()
+{
+
+    $vemail = env('VEMAIL');
+    $vpass = env('VPASS');
+
+
+    $databody = array(
+        "email" => $vemail,
+        "password" => $vpass,
+        "type" => "short_term",
+        "network" => "",
+        "id" => "",
+    );
+
+    $body = json_encode($databody);
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://nonvoipusnumber.com/manager/api/products',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => $body,
+        CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json"
+        ),
+    ));
+
+    $var = curl_exec($curl);
+    curl_close($curl);
+    $var = json_decode($var);
+    $services = $var->message ?? null;
+
+    if ($var == null) {
+        $services = null;
+    }
+
+    return $services;
+
+
+}
+
+
+function get_viop_cost($product_id)
+{
+    $vemail = env('VEMAIL');
+    $vpass = env('VPASS');
+
+    $databody = array(
+        "email" => $vemail,
+        "password" => $vpass,
+        "type" => "short_term",
+        "network" => "",
+        "id" => $product_id,
+    );
+
+    $body = json_encode($databody);
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://nonvoipusnumber.com/manager/api/products',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => $body,
+        CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json"
+        ),
+    ));
+
+    $var = curl_exec($curl);
+    curl_close($curl);
+    $var = json_decode($var);
+    $price = $var->message[0]->price ?? null;
+    $av = $var->message[0]->available ?? null;
+
+
+    $data['price'] = $price;
+    $data['av'] = $av;
+    return $data;
+
+
+
+}
+
+
+
+function buy_viop($product_id, $price, $cost)
+{
+
+
+    $vemail = env('VEMAIL');
+    $vpass = env('VPASS');
+
+    $databody = array(
+        "email" => $vemail,
+        "password" => $vpass,
+        "type" => "short_term",
+        "network" => "",
+        "product_id" => $product_id,
+    );
+
+    $body = json_encode($databody);
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://nonvoipusnumber.com/manager/api/order',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => $body,
+        CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json"
+        ),
+    ));
+
+    $var = curl_exec($curl);
+    curl_close($curl);
+    $var = json_decode($var);
+    $status = $var->status ??  null;
+
+    if($status == "success"){
+
+        $phone = $var->message[0]->number;
+        $service_name = $var->message[0]->service;
+        $id = $var->message[0]->order_id;
+
+        Verification::where('phone', $phone)->where('status', 2)->delete() ?? null;
+        $ver = new Verification();
+        $ver->user_id = Auth::id();
+        $ver->phone = $phone;
+        $ver->order_id = $id;
+        $ver->country = "US";
+        $ver->service = $service_name;
+        $ver->cost = $price;
+        $ver->api_cost = $cost;
+        $ver->status = 1;
+        $ver->type = 4;
+        $ver->save();
+
+        User::where('id', Auth::id())->decrement('wallet', $price);
+
+        return 1;
+    }else{
+
+        return 2;
+    }
+
+
+
+}
+
+
+function cancle_viop($product_id, $service)
+{
+
+
+    $vemail = env('VEMAIL');
+    $vpass = env('VPASS');
+
+    $databody = array(
+        "email" => $vemail,
+        "password" => $vpass,
+        "service" => $service,
+        "order_id" => $product_id,
+    );
+
+    $body = json_encode($databody);
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://nonvoipusnumber.com/manager/api/reject',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => $body,
+        CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json"
+        ),
+    ));
+
+    $var = curl_exec($curl);
+    curl_close($curl);
+    $var = json_decode($var);
+    $status = $var->status ??  null;
+    if($status == "success"){
+        return 1;
+    }else{
+        return 2;
+    }
+
+
+
+}
+
+
+
+

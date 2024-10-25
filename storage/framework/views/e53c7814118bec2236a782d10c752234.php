@@ -495,7 +495,7 @@
                             <tr>
                                 <td class="content-cell" align="center">
                                     <p class="f-fallback sub align-center">
-                                        ACEVERIFY
+                                        FaddedSms
                                     </p>
                                 </td>
                             </tr>

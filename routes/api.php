@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ViopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -21,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::any('w-webhook',  [HomeController::class,'world_webhook']);
 Route::any('d-webhook',  [HomeController::class,'diasy_webhook']);
+Route::any('v-webhook',  [ViopController::class,'viop_webhook']);
+
 
 Route::any('e_fund',  [HomeController::class,'e_fund']);
 Route::any('e_check',  [HomeController::class,'e_check']);

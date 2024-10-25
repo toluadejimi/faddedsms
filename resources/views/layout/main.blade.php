@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{url('')}}/public/assets/css/style.css" id="main-style-link">
     <link rel="stylesheet" href="{{url('')}}/public/assets/css/style2.css">
     <link rel="stylesheet" href="{{url('')}}/public/assets/css/style2.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 
     <link rel="stylesheet" type="text/css" href="{{url('')}}/public/api/daisysms.css">

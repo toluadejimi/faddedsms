@@ -32,39 +32,25 @@
 
                     <h4 class="mb-3" style="color: #fc6507">Hi {{ Auth::user()->username }} 👋</h4>
                     <p class="mb-0">
-                        <a href="fund-wallet" class="btn btn-dark mb-4" >NGN {{ number_format(Auth::user()->wallet, 2) }}</a>
+                        <a href="fund-wallet"
+                           class="btn btn-dark mb-4">NGN {{ number_format(Auth::user()->wallet, 2) }}</a>
                     </p>
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
-{{--                    <button--}}
-{{--                        class="btn btn-light-secondary my-3"--}}
-{{--                        type="button"--}}
-{{--                        data-bs-toggle="offcanvas"--}}
-{{--                        data-bs-target="#offcanvasRight"--}}
-{{--                        aria-controls="offcanvasRight"--}}
-{{--                        style="background: #064174"--}}
-{{--                    >--}}
-{{--                        USA SERVICES--}}
-{{--                    </button>--}}
+                    {{--                    <button--}}
+                    {{--                        class="btn btn-light-secondary my-3"--}}
+                    {{--                        type="button"--}}
+                    {{--                        data-bs-toggle="offcanvas"--}}
+                    {{--                        data-bs-target="#offcanvasRight"--}}
+                    {{--                        aria-controls="offcanvasRight"--}}
+                    {{--                        style="background: #064174"--}}
+                    {{--                    >--}}
+                    {{--                        USA SERVICES--}}
+                    {{--                    </button>--}}
 
 
-                    <a class="btn btn-dark border-0" href="/world"
-                       style="background: #064175"
-                    >
-                        SERVER 1
-                    </a>
-
-
-                    <a class="btn btn-dark border-0" href="/cworld"
-                       style="background: #fc6507"
-                    >
-                        SERVER 2
-                    </a>
-
-
-
-
+                    @include('servermenu')
 
 
                     <div class="col-12 my-5">
@@ -77,7 +63,8 @@
 
                                             <div class="p-2 col-lg-12">
                                                 <strong>
-                                                    <h4 class="text-white d-flex justify-content-center my-3">Verifications</h4>
+                                                    <h4 class="text-white d-flex justify-content-center my-3">
+                                                        Verifications</h4>
                                                 </strong>
                                             </div>
 
@@ -167,17 +154,18 @@
                             <div class="row">
                                 <div class="col-md-6 col-xl-6 col-sm-12">
                                     <div class="card">
-                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight"
+                                             aria-labelledby="offcanvasRightLabel">
 
                                             <div class="offcanvas-body">
-
 
 
                                                 <div class="">
 
                                                     <div class="p-2 col-lg-6">
                                                         <input type="text" id="searchInput" class="form-control"
-                                                               placeholder="Search for a service..." onkeyup="filterServices()">
+                                                               placeholder="Search for a service..."
+                                                               onkeyup="filterServices()">
                                                     </div>
 
 
@@ -201,7 +189,8 @@
                                                     @foreach ($services as $key => $value)
                                                         <div class="row service-row text-white">
                                                             @foreach ($value as $innerKey => $innerValue)
-                                                                <div style="font-size: 11px" class="col-5 service-name d-flex justify-content-start">
+                                                                <div style="font-size: 11px"
+                                                                     class="col-5 service-name d-flex justify-content-start">
                                                                     🇺🇸 {{ $innerValue->name }}
                                                                 </div>
 
@@ -218,11 +207,19 @@
                                                                 <div class="col mr-3">
                                                                     @auth
                                                                         <form action="order-usano" method="POST">
-                                                                            <input hidden name="service" value="{{ $key }}">
-                                                                            <input hidden name="price" value="{{ $cost }}">
-                                                                            <input hidden name="cost" value="{{ $innerValue->cost }}">
-                                                                            <input hidden name="name" value="{{ $innerValue->name }}">
-                                                                            <button class="myButton" style="border: 0px; background: transparent" onclick="hideButton(this)"><i class="fa fa-shopping-bag"></i></button>
+                                                                            <input hidden name="service"
+                                                                                   value="{{ $key }}">
+                                                                            <input hidden name="price"
+                                                                                   value="{{ $cost }}">
+                                                                            <input hidden name="cost"
+                                                                                   value="{{ $innerValue->cost }}">
+                                                                            <input hidden name="name"
+                                                                                   value="{{ $innerValue->name }}">
+                                                                            <button class="myButton"
+                                                                                    style="border: 0px; background: transparent"
+                                                                                    onclick="hideButton(this)"><i
+                                                                                    class="fa fa-shopping-bag"></i>
+                                                                            </button>
                                                                         </form>
                                                                     @else
 
@@ -260,7 +257,6 @@
                                         </div>
 
 
-
                                     </div>
                                 </div>
                             </div>
@@ -288,20 +284,14 @@
                         <div class="offcanvas-body py-0">
 
 
-
                         </div>
 
                     </div>
 
 
-
                 </div>
             </div>
         </div>
-
-
-
-
 
 
     </section>

@@ -7,7 +7,6 @@
                     <h4 class="mb-3 text-danger">Hi <?php echo e(Auth::user()->username); ?>,</h4>
                     <p class="mb-0">
                         <a href="fund-wallet" class="btn btn-dark" >NGN <?php echo e(number_format(Auth::user()->wallet, 2)); ?></a>
-
                     </p>
                 </div>
             </div>

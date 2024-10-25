@@ -305,7 +305,9 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+
+
+                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12" style="height:400px; width:100%; overflow-y: scroll;" class="p-2">
 
                                 <div class="card">
                                     <h5 class="card-header">Update Cost / Rate</h5>
@@ -361,6 +363,31 @@
 
                                         </div>
 
+                                        <hr>
+
+                                        <div class="col-12 p-3">
+                                            <form method="post" action="update-viop-rate">
+                                                @csrf
+                                                <label>ON VIOP US RATE</label>
+                                                <input class="form-control2 text-dark" name="rate" value="{{ $vioprate}}">
+                                                <button type="submit" class="btn btn-primary">Update Rate</button>
+                                            </form>
+
+                                        </div>
+
+
+                                        <div class="col-12 p-3">
+                                            <form method="post" action="update-viop-cost">
+                                                @csrf
+                                                <label>ON VIOP US COST</label>
+                                                <input class="form-control2 text-dark" name="cost" value="{{ $viopcost }}">
+
+                                                <button type="submit" class="btn btn-primary">Update Cost</button>
+                                            </form>
+
+                                        </div>
+
+
 
                                     </div>
                                 </div>
@@ -391,7 +418,7 @@
 
                                                     <tr>
                                                         <td>{{ $data->ref_id }} </td>
-                                                        <td>{{ $data->user->username }} </td>
+                                                        <td>{{ $data->user->username ?? "name" }} </td>
                                                         @if($data->type == 2)
                                                             <td><span class="badge badge-success">Credit</span>
                                                             </td>

@@ -840,7 +840,6 @@ class HomeController extends Controller
     function diasy_webhook(request $request)
     {
 
-
         $activationId = $request->activationId;
         $messageId = $request->messageId;
         $service = $request->service;

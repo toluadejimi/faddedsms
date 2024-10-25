@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SimController;
+use App\Http\Controllers\ViopController;
 use App\Http\Controllers\WorldNumberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
@@ -51,6 +52,7 @@ Route::get('/clear2', function() {
 
 Route::any('getInitialCountdown',  [HomeController::class,'getInitialCountdown']);
 
+Route::get('/search-viop-services', [ViopController::class, 'searchservices']);
 
 
 
@@ -101,6 +103,9 @@ Route::any('update-smspool-cost',  [AdminController::class,'update_smspool_cost'
 Route::any('get-smscode',  [HomeController::class,'get_smscode']);
 
 
+
+
+
 Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () {
 
     Route::get('us',  [HomeController::class,'home']);
@@ -110,6 +115,28 @@ Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () 
     Route::any('check-av',  [WorldNumberController::class,'check_av']);
     Route::post('order_now',  [WorldNumberController::class,'order_now']);
     Route::any('get-smscodeworld',  [WorldNumberController::class,'get_smscode']);
+    Route::any('cancleworld-sms',  [WorldNumberController::class,'cancleworld_sms']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Route::get('server3',  [ViopController::class,'index']);
+    Route::post('viop-buy',  [ViopController::class,'viop_buy']);
+
+    Route::any('get-viopsms',  [ViopController::class,'get_viopsms']);
+    Route::any('cancle-viop',  [ViopController::class,'cancle_viop']);
+
+
+
 
     Route::any('orders',  [HomeController::class,'orders']);
 
@@ -149,6 +176,14 @@ Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () 
 
     Route::any('update-sim-rate',  [AdminController::class,'update_sim_rate']);
     Route::any('update-sim-cost',  [AdminController::class,'update_sim_cost']);
+
+
+    Route::any('update-viop-rate', [ViopController::class, 'update_viop_rate']);
+    Route::any('update-viop-cost', [ViopController::class, 'update_viop_cost']);
+
+
+
+
 
 });
 

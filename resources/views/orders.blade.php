@@ -7,36 +7,26 @@
                 <div class="col-md-8 col-xl-6">
                     <h4 class="mb-3" style="color: #fc6507">Hi {{ Auth::user()->username }} 👋</h4>
                     <p class="mb-0">
-                        <a href="fund-wallet" class="btn btn-dark mb-4" >NGN {{ number_format(Auth::user()->wallet, 2) }}</a>
+                        <a href="fund-wallet"
+                           class="btn btn-dark mb-4">NGN {{ number_format(Auth::user()->wallet, 2) }}</a>
                     </p>
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
-{{--                    <button--}}
-{{--                        class="btn btn-light-secondary my-3"--}}
-{{--                        type="button"--}}
-{{--                        data-bs-toggle="offcanvas"--}}
-{{--                        data-bs-target="#offcanvasRight"--}}
-{{--                        aria-controls="offcanvasRight"--}}
-{{--                        style="background: #064174"--}}
-{{--                    >--}}
-{{--                        USA SERVICES--}}
-{{--                    </button>--}}
+                    {{--                    <button--}}
+                    {{--                        class="btn btn-light-secondary my-3"--}}
+                    {{--                        type="button"--}}
+                    {{--                        data-bs-toggle="offcanvas"--}}
+                    {{--                        data-bs-target="#offcanvasRight"--}}
+                    {{--                        aria-controls="offcanvasRight"--}}
+                    {{--                        style="background: #064174"--}}
+                    {{--                    >--}}
+                    {{--                        USA SERVICES--}}
+                    {{--                    </button>--}}
 
 
 
-                    <a class="btn btn-dark border-0" href="/world"
-                       style="background: #064175"
-                    >
-                        SERVER 1
-                    </a>
-
-
-                    <a class="btn btn-dark border-0" href="/cworld"
-                       style="background: #fc6507"
-                    >
-                        SERVER 2
-                    </a>
+                    @include('servermenu')
 
 
                 </div>
@@ -47,10 +37,10 @@
         <div class="row">
             <div class="col-md-6 col-xl-6 col-sm-12">
                 <div class="card">
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight"
+                         aria-labelledby="offcanvasRightLabel">
 
                         <div class="offcanvas-body">
-
 
 
                             <div class="">
@@ -81,7 +71,8 @@
                                 @foreach ($services as $key => $value)
                                     <div class="row service-row text-white">
                                         @foreach ($value as $innerKey => $innerValue)
-                                            <div style="font-size: 11px" class="col-5 service-name d-flex justify-content-start">
+                                            <div style="font-size: 11px"
+                                                 class="col-5 service-name d-flex justify-content-start">
                                                 🇺🇸 {{ $innerValue->name }}
                                             </div>
 
@@ -102,7 +93,10 @@
                                                         <input hidden name="price" value="{{ $cost }}">
                                                         <input hidden name="cost" value="{{ $innerValue->cost }}">
                                                         <input hidden name="name" value="{{ $innerValue->name }}">
-                                                        <button class="myButton" style="border: 0px; background: transparent" onclick="hideButton(this)"><i class="fa fa-shopping-bag"></i></button>
+                                                        <button class="myButton"
+                                                                style="border: 0px; background: transparent"
+                                                                onclick="hideButton(this)"><i
+                                                                class="fa fa-shopping-bag"></i></button>
                                                     </form>
                                                 @else
 
@@ -127,7 +121,6 @@
 
                                             </div>
 
-
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -139,13 +132,9 @@
                     </div>
 
 
-
                 </div>
             </div>
         </div>
-
-
-
 
 
         <div class="container technology-block">
@@ -179,10 +168,7 @@
                         @endif
 
 
-
-
-
-                        <div class="col-xl-12 col-md-12 col-sm-12  justify-center" >
+                        <div class="col-xl-12 col-md-12 col-sm-12  justify-center">
                             <div class="card" style="background: #064174; color: #ffffff">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -204,119 +190,548 @@
                                                     <td style="font-size: 12px; color: white;">{{ $data->phone }}
                                                     </td>
 
-                                                    @if($data->sms != null)
-                                                        <td style="font-size: 12px; color: #ffffff">{{ $data->sms }}
-                                                        </td>
-                                                    @else
-                                                        <style>
-                                                            /* HTML: <div class="loader"></div> */
-                                                            .loader {
-                                                                width: 50px;
-                                                                aspect-ratio: 1;
-                                                                display: grid;
-                                                                animation: l14 4s infinite;
-                                                            }
 
-                                                            .loader::before,
-                                                            .loader::after {
-                                                                content: "";
-                                                                grid-area: 1/1;
-                                                                border: 8px solid;
-                                                                border-radius: 50%;
-                                                                border-color: red red #0000 #0000;
-                                                                mix-blend-mode: darken;
-                                                                animation: l14 1s infinite linear;
-                                                            }
-
-                                                            .loader::after {
-                                                                border-color: #0000 #0000 blue blue;
-                                                                animation-direction: reverse;
-                                                            }
-
-                                                            @keyframes l14 {
-                                                                100% {
-                                                                    transform: rotate(1turn)
+                                                    @if($data->type == 4)
+                                                        @if($data->sms != null)
+                                                            <td style="font-size: 12px; color: #ffffff">{{ $data->sms }}
+                                                            </td>
+                                                        @else
+                                                            <style>
+                                                                /* HTML: <div class="loader"></div> */
+                                                                .loader {
+                                                                    width: 50px;
+                                                                    aspect-ratio: 1;
+                                                                    display: grid;
+                                                                    animation: l14 4s infinite;
                                                                 }
-                                                            }
-                                                        </style>
 
-                                                        <style>#l1 {
-                                                                width: 15px;
-                                                                aspect-ratio: 1;
-                                                                border-radius: 50%;
-                                                                border: 1px solid;
-                                                                border-color: #fc6507 #0000;
-                                                                animation: l1 1s infinite;
-                                                            }
-
-                                                            @keyframes l1 {
-                                                                to {
-                                                                    transform: rotate(.5turn)
+                                                                .loader::before,
+                                                                .loader::after {
+                                                                    content: "";
+                                                                    grid-area: 1/1;
+                                                                    border: 8px solid;
+                                                                    border-radius: 50%;
+                                                                    border-color: red red #0000 #0000;
+                                                                    mix-blend-mode: darken;
+                                                                    animation: l14 1s infinite linear;
                                                                 }
-                                                            }
-                                                        </style>
 
-                                                        <td style="font-size: 12px; color: white">
-                                                            <div id="l1" class="justify-content-start">
-                                                            </div>
-                                                            <div>
-                                                                <input style="background: none;" class="border-0 "
-                                                                       id="response-input{{$data->id}}">
-                                                            </div>
+                                                                .loader::after {
+                                                                    border-color: #0000 #0000 blue blue;
+                                                                    animation-direction: reverse;
+                                                                }
+
+                                                                @keyframes l14 {
+                                                                    100% {
+                                                                        transform: rotate(1turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <style>#l1 {
+                                                                    width: 15px;
+                                                                    aspect-ratio: 1;
+                                                                    border-radius: 50%;
+                                                                    border: 1px solid;
+                                                                    border-color: #fc6507 #0000;
+                                                                    animation: l1 1s infinite;
+                                                                }
+
+                                                                @keyframes l1 {
+                                                                    to {
+                                                                        transform: rotate(.5turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <td style="font-size: 12px; color: white">
+
+                                                                <div>
+                                                                    <input style="background: none;" class="border-0 "
+                                                                           id="response-input{{$data->id}}">
+                                                                </div>
 
 
-                                                            <script>
-                                                                makeRequest{{$data->id}}();
-                                                                setInterval(makeRequest{{$data->id}}, 5000);
+                                                                <script>
+                                                                    makeRequest{{$data->id}}();
+                                                                    setInterval(makeRequest{{$data->id}}, 5000);
 
-                                                                function makeRequest{{$data->id}}() {
-                                                                    fetch('{{ url('') }}/get-smscode?num={{ $data->phone }}')
-                                                                        .then(response => {
-                                                                            if (!response.ok) {
-                                                                                throw new Error(`HTTP error! Status: ${response.status}`);
-                                                                            }
-                                                                            return response.json();
-                                                                        })
-                                                                        .then(data => {
+                                                                    function makeRequest{{$data->id}}() {
+                                                                        fetch('{{ url('') }}/get-viopsms?num={{ $data->phone }}')
+                                                                            .then(response => {
+                                                                                if (!response.ok) {
+                                                                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                                                                }
+                                                                                return response.json();
+                                                                            })
+                                                                            .then(data => {
 
-                                                                            console.log(data.message);
-                                                                            displayResponse{{$data->id}}(data.message);
+                                                                                console.log(data.message);
+                                                                                displayResponse{{$data->id}}(data.message);
 
-                                                                        })
-                                                                        .catch(error => {
-                                                                            console.error('Error:', error);
-                                                                            displayResponse{{$data->id}}({
-                                                                                error: 'An error occurred while fetching the data.'
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.error('Error:', error);
+                                                                                displayResponse{{$data->id}}({
+                                                                                    error: 'An error occurred while fetching the data.'
+                                                                                });
                                                                             });
-                                                                        });
+                                                                    }
+
+                                                                    function displayResponse{{$data->id}}(data) {
+                                                                        const responseInput = document.getElementById('response-input{{$data->id}}');
+                                                                        responseInput.value = data;
+                                                                    }
+
+                                                                </script>
+                                                            </td>
+                                                        @endif
+
+                                                            <td>
+                                                                @if ($data->status == 1)
+                                                                    <span
+                                                                        style="background: orange; border:0px; font-size: 10px"
+                                                                        class="btn btn-warning btn-sm">Pending</span>
+                                                                    <a href="cancle-viop?id={{  $data->order_id }}&delete=1"
+                                                                       style="background: rgb(168, 0, 14); border:0px; font-size: 10px"
+                                                                       onclick="this.style.display='none'"
+                                                                       class="btn btn-warning btn-sm">Delete</span>
+
+                                                                        @else
+                                                                            <span style="font-size: 10px;"
+                                                                                  class="text-white btn btn-success btn-sm">Completed</span>
+                                                                @endif
+
+                                                            </td>
+
+
+
+                                                    @elseif($data->type == 3)
+
+                                                        @if($data->sms != null)
+                                                            <td style="font-size: 12px;">{{ $data->sms }}
+                                                            </td>
+                                                        @else
+                                                            <style>
+                                                                /* HTML: <div class="loader"></div> */
+                                                                .loader {
+                                                                    width: 50px;
+                                                                    aspect-ratio: 1;
+                                                                    display: grid;
+                                                                    animation: l14 4s infinite;
                                                                 }
 
-                                                                function displayResponse{{$data->id}}(data) {
-                                                                    const responseInput = document.getElementById('response-input{{$data->id}}');
-                                                                    responseInput.value = data;
+                                                                .loader::before,
+                                                                .loader::after {
+                                                                    content: "";
+                                                                    grid-area: 1/1;
+                                                                    border: 8px solid;
+                                                                    border-radius: 50%;
+                                                                    border-color: red red #0000 #0000;
+                                                                    mix-blend-mode: darken;
+                                                                    animation: l14 1s infinite linear;
                                                                 }
 
-                                                            </script>
-                                                        </td>
+                                                                .loader::after {
+                                                                    border-color: #0000 #0000 blue blue;
+                                                                    animation-direction: reverse;
+                                                                }
+
+                                                                @keyframes l14 {
+                                                                    100% {
+                                                                        transform: rotate(1turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <style>#l1 {
+                                                                    width: 15px;
+                                                                    aspect-ratio: 1;
+                                                                    border-radius: 50%;
+                                                                    border: 1px solid;
+                                                                    border-color: #000 #0000;
+                                                                    animation: l1 1s infinite;
+                                                                }
+
+                                                                @keyframes l1 {
+                                                                    to {
+                                                                        transform: rotate(.5turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <td>
+                                                                <div class="justify-content-start">
+                                                                </div>
+                                                                <div>
+                                                                    <input class="border-0 justify-content-end"
+                                                                           id="response-input{{$data->id}}">
+                                                                </div>
+
+
+                                                                <script>
+                                                                    makeRequest{{$data->id}}();
+                                                                    setInterval(makeRequest{{$data->id}}, 10000);
+
+                                                                    function makeRequest{{$data->id}}() {
+                                                                        fetch('{{ url('') }}/get-csms?id={{ $data->order_id }}')
+                                                                            .then(response => {
+                                                                                if (!response.ok) {
+                                                                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                                                                }
+                                                                                return response.json();
+                                                                            })
+                                                                            .then(data => {
+
+                                                                                console.log(data.message);
+                                                                                displayResponse{{$data->id}}(data.message);
+
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.error('Error:', error);
+                                                                                displayResponse{{$data->id}}({
+                                                                                    error: 'An error occurred while fetching the data.'
+                                                                                });
+                                                                            });
+                                                                    }
+
+                                                                    function displayResponse{{$data->id}}(data) {
+                                                                        const responseInput = document.getElementById('response-input{{$data->id}}');
+                                                                        responseInput.value = data;
+                                                                    }
+
+                                                                </script>
+                                                            </td>
+                                                        @endif
+
+                                                            <td>
+                                                                @if ($data->status == 1)
+                                                                    <span
+                                                                        style="background: orange; border:0px; font-size: 10px"
+                                                                        class="btn btn-warning btn-sm">Pending</span>
+                                                                    <a href="c-sms?id={{  $data->id }}&delete=1"
+                                                                       style="background: rgb(168, 0, 14); border:0px; font-size: 10px"
+                                                                       onclick="this.style.display='none'"
+                                                                       class="btn btn-warning btn-sm">Delete</span>
+
+                                                                        @else
+                                                                            <span style="font-size: 10px;"
+                                                                                  class="text-white btn btn-success btn-sm">Completed</span>
+                                                                @endif
+
+                                                            </td>
+
+                                                    @elseif($data->type == 2)
+
+                                                        @if($data->sms != null)
+                                                            <td style="font-size: 12px; color: #ffffff">{{ $data->sms }}
+                                                            </td>
+                                                        @else
+                                                            <style>
+                                                                /* HTML: <div class="loader"></div> */
+                                                                .loader {
+                                                                    width: 50px;
+                                                                    aspect-ratio: 1;
+                                                                    display: grid;
+                                                                    animation: l14 4s infinite;
+                                                                }
+
+                                                                .loader::before,
+                                                                .loader::after {
+                                                                    content: "";
+                                                                    grid-area: 1/1;
+                                                                    border: 8px solid;
+                                                                    border-radius: 50%;
+                                                                    border-color: red red #0000 #0000;
+                                                                    mix-blend-mode: darken;
+                                                                    animation: l14 1s infinite linear;
+                                                                }
+
+                                                                .loader::after {
+                                                                    border-color: #0000 #0000 blue blue;
+                                                                    animation-direction: reverse;
+                                                                }
+
+                                                                @keyframes l14 {
+                                                                    100% {
+                                                                        transform: rotate(1turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <style>#l1 {
+                                                                    width: 15px;
+                                                                    aspect-ratio: 1;
+                                                                    border-radius: 50%;
+                                                                    border: 1px solid;
+                                                                    border-color: #fc6507 #0000;
+                                                                    animation: l1 1s infinite;
+                                                                }
+
+                                                                @keyframes l1 {
+                                                                    to {
+                                                                        transform: rotate(.5turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <td style="font-size: 12px; color: white">
+                                                                <div id="l1" class="justify-content-start">
+                                                                </div>
+                                                                <div>
+                                                                    <input style="background: none;" class="border-0 "
+                                                                           id="response-input{{$data->id}}">
+                                                                </div>
+
+
+                                                                <script>
+                                                                    makeRequest{{$data->id}}();
+                                                                    setInterval(makeRequest{{$data->id}}, 5000);
+
+                                                                    function makeRequest{{$data->id}}() {
+                                                                        fetch('{{ url('') }}/get-smscode?num={{ $data->phone }}')
+                                                                            .then(response => {
+                                                                                if (!response.ok) {
+                                                                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                                                                }
+                                                                                return response.json();
+                                                                            })
+                                                                            .then(data => {
+
+                                                                                console.log(data.message);
+                                                                                displayResponse{{$data->id}}(data.message);
+
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.error('Error:', error);
+                                                                                displayResponse{{$data->id}}({
+                                                                                    error: 'An error occurred while fetching the data.'
+                                                                                });
+                                                                            });
+                                                                    }
+
+                                                                    function displayResponse{{$data->id}}(data) {
+                                                                        const responseInput = document.getElementById('response-input{{$data->id}}');
+                                                                        responseInput.value = data;
+                                                                    }
+
+                                                                </script>
+                                                            </td>
+
+
+                                                        @endif
+
+                                                            <td>
+                                                                @if ($data->status == 1)
+                                                                    <span
+                                                                        style="background: orange; border:0px; font-size: 10px"
+                                                                        class="btn btn-warning btn-sm">Pending</span>
+                                                                    <a href="cancleworld-sms?id={{  $data->id }}&delete=1"
+                                                                       style="background: rgb(168, 0, 14); border:0px; font-size: 10px"  onclick="this.style.display='none'"
+                                                                       class="btn btn-warning btn-sm">Delete</span>
+
+                                                                        @else
+                                                                            <span style="font-size: 10px;"
+                                                                                  class="text-white btn btn-success btn-sm">Completed</span>
+                                                                @endif
+
+                                                            </td>
+
+                                                    @elseif($data->type == 1)
+                                                        @if($data->sms != null)
+                                                            <td style="font-size: 12px; color: #ffffff">{{ $data->sms }}
+                                                            </td>
+                                                        @else
+                                                            <style>
+                                                                /* HTML: <div class="loader"></div> */
+                                                                .loader {
+                                                                    width: 50px;
+                                                                    aspect-ratio: 1;
+                                                                    display: grid;
+                                                                    animation: l14 4s infinite;
+                                                                }
+
+                                                                .loader::before,
+                                                                .loader::after {
+                                                                    content: "";
+                                                                    grid-area: 1/1;
+                                                                    border: 8px solid;
+                                                                    border-radius: 50%;
+                                                                    border-color: red red #0000 #0000;
+                                                                    mix-blend-mode: darken;
+                                                                    animation: l14 1s infinite linear;
+                                                                }
+
+                                                                .loader::after {
+                                                                    border-color: #0000 #0000 blue blue;
+                                                                    animation-direction: reverse;
+                                                                }
+
+                                                                @keyframes l14 {
+                                                                    100% {
+                                                                        transform: rotate(1turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <style>#l1 {
+                                                                    width: 15px;
+                                                                    aspect-ratio: 1;
+                                                                    border-radius: 50%;
+                                                                    border: 1px solid;
+                                                                    border-color: #fc6507 #0000;
+                                                                    animation: l1 1s infinite;
+                                                                }
+
+                                                                @keyframes l1 {
+                                                                    to {
+                                                                        transform: rotate(.5turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <td style="font-size: 12px; color: white">
+                                                                <div id="l1" class="justify-content-start">
+                                                                </div>
+                                                                <div>
+                                                                    <input style="background: none;" class="border-0 "
+                                                                           id="response-input{{$data->id}}">
+                                                                </div>
+
+
+                                                                <script>
+                                                                    makeRequest{{$data->id}}();
+                                                                    setInterval(makeRequest{{$data->id}}, 5000);
+
+                                                                    function makeRequest{{$data->id}}() {
+                                                                        fetch('{{ url('') }}/get-smscode?num={{ $data->phone }}')
+                                                                            .then(response => {
+                                                                                if (!response.ok) {
+                                                                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                                                                }
+                                                                                return response.json();
+                                                                            })
+                                                                            .then(data => {
+
+                                                                                console.log(data.message);
+                                                                                displayResponse{{$data->id}}(data.message);
+
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.error('Error:', error);
+                                                                                displayResponse{{$data->id}}({
+                                                                                    error: 'An error occurred while fetching the data.'
+                                                                                });
+                                                                            });
+                                                                    }
+
+                                                                    function displayResponse{{$data->id}}(data) {
+                                                                        const responseInput = document.getElementById('response-input{{$data->id}}');
+                                                                        responseInput.value = data;
+                                                                    }
+
+                                                                </script>
+                                                            </td>
+                                                        @endif
+                                                    @else
+                                                        @if($data->sms != null)
+                                                            <td style="font-size: 12px; color: #ffffff">{{ $data->sms }}
+                                                            </td>
+                                                        @else
+                                                            <style>
+                                                                /* HTML: <div class="loader"></div> */
+                                                                .loader {
+                                                                    width: 50px;
+                                                                    aspect-ratio: 1;
+                                                                    display: grid;
+                                                                    animation: l14 4s infinite;
+                                                                }
+
+                                                                .loader::before,
+                                                                .loader::after {
+                                                                    content: "";
+                                                                    grid-area: 1/1;
+                                                                    border: 8px solid;
+                                                                    border-radius: 50%;
+                                                                    border-color: red red #0000 #0000;
+                                                                    mix-blend-mode: darken;
+                                                                    animation: l14 1s infinite linear;
+                                                                }
+
+                                                                .loader::after {
+                                                                    border-color: #0000 #0000 blue blue;
+                                                                    animation-direction: reverse;
+                                                                }
+
+                                                                @keyframes l14 {
+                                                                    100% {
+                                                                        transform: rotate(1turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <style>#l1 {
+                                                                    width: 15px;
+                                                                    aspect-ratio: 1;
+                                                                    border-radius: 50%;
+                                                                    border: 1px solid;
+                                                                    border-color: #fc6507 #0000;
+                                                                    animation: l1 1s infinite;
+                                                                }
+
+                                                                @keyframes l1 {
+                                                                    to {
+                                                                        transform: rotate(.5turn)
+                                                                    }
+                                                                }
+                                                            </style>
+
+                                                            <td style="font-size: 12px; color: white">
+                                                                <div id="l1" class="justify-content-start">
+                                                                </div>
+                                                                <div>
+                                                                    <input style="background: none;" class="border-0 "
+                                                                           id="response-input{{$data->id}}">
+                                                                </div>
+
+
+                                                                <script>
+                                                                    makeRequest{{$data->id}}();
+                                                                    setInterval(makeRequest{{$data->id}}, 5000);
+
+                                                                    function makeRequest{{$data->id}}() {
+                                                                        fetch('{{ url('') }}/get-smscode?num={{ $data->phone }}')
+                                                                            .then(response => {
+                                                                                if (!response.ok) {
+                                                                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                                                                }
+                                                                                return response.json();
+                                                                            })
+                                                                            .then(data => {
+
+                                                                                console.log(data.message);
+                                                                                displayResponse{{$data->id}}(data.message);
+
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.error('Error:', error);
+                                                                                displayResponse{{$data->id}}({
+                                                                                    error: 'An error occurred while fetching the data.'
+                                                                                });
+                                                                            });
+                                                                    }
+
+                                                                    function displayResponse{{$data->id}}(data) {
+                                                                        const responseInput = document.getElementById('response-input{{$data->id}}');
+                                                                        responseInput.value = data;
+                                                                    }
+
+                                                                </script>
+                                                            </td>
+                                                        @endif
                                                     @endif
 
 
-                                                    <td>
-                                                        @if ($data->status == 1)
-                                                            <span
-                                                                style="background: orange; border:0px; font-size: 10px"
-                                                                class="btn btn-warning btn-sm">Pending</span>
-                                                            <a href="delete-order?id={{  $data->id }}&delete=1"
-                                                               style="background: rgb(168, 0, 14); border:0px; font-size: 10px"
-                                                               onclick="hideButtondelete(this)"
-                                                               class="btn btn-warning btn-sm">Delete</span>
-
-                                                                @else
-                                                                    <span style="font-size: 10px;"
-                                                                          class="text-white btn btn-success btn-sm">Completed</span>
-                                                        @endif
-
-                                                    </td>
 
                                                 </tr>
 
@@ -343,8 +758,8 @@
         </div>
 
         <script>
-            window.onload = function() {
-                setInterval(function() {
+            window.onload = function () {
+                setInterval(function () {
                     location.reload();
                 }, 40000);
             };
@@ -371,8 +786,5 @@
 
 
     </section>
-
-
-
 
 @endsection

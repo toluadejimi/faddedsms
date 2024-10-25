@@ -6,49 +6,37 @@
                 <div class="col-md-8 col-xl-6">
                     <h4 class="mb-3 text-danger">Hi <?php echo e(Auth::user()->username); ?> 👋</h4>
                     <p class="mb-0">
-                        <a href="fund-wallet" class="btn btn-dark mb-4" >NGN <?php echo e(number_format(Auth::user()->wallet, 2)); ?></a>
+                        <a href="fund-wallet"
+                           class="btn btn-dark mb-4">NGN <?php echo e(number_format(Auth::user()->wallet, 2)); ?></a>
                     </p>
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
 
 
-
-
-
-
-
-
-
-
-
-
-                    <a class="btn btn-dark border-0" href="/world"
-                       style="background: #064175"
-                    >
-                        SERVER 1
-                    </a>
-
-
-                    <a class="btn btn-dark border-0" href="/cworld"
-                       style="background: #fc6507"
-                    >
-                        SERVER 2
-                    </a>
+                    <?php echo $__env->make('servermenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </div>
             </div>
         </div>
 
 
-
-
         <div class="row">
             <div class="col-md-6 col-xl-6 col-sm-12">
                 <div class="card">
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight"
+                         aria-labelledby="offcanvasRightLabel">
 
                         <div class="offcanvas-body">
-
 
 
                             <div class="">
@@ -79,7 +67,8 @@
                                 <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="row service-row text-white">
                                         <?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $innerKey => $innerValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <div style="font-size: 11px" class="col-5 service-name d-flex justify-content-start">
+                                            <div style="font-size: 11px"
+                                                 class="col-5 service-name d-flex justify-content-start">
                                                 🇺🇸 <?php echo e($innerValue->name); ?>
 
                                             </div>
@@ -101,7 +90,10 @@
                                                         <input hidden name="price" value="<?php echo e($cost); ?>">
                                                         <input hidden name="cost" value="<?php echo e($innerValue->cost); ?>">
                                                         <input hidden name="name" value="<?php echo e($innerValue->name); ?>">
-                                                        <button class="myButton" style="border: 0px; background: transparent" onclick="hideButton(this)"><i class="fa fa-shopping-bag"></i></button>
+                                                        <button class="myButton"
+                                                                style="border: 0px; background: transparent"
+                                                                onclick="hideButton(this)"><i
+                                                                class="fa fa-shopping-bag"></i></button>
                                                     </form>
                                                 <?php else: ?>
 
@@ -126,7 +118,6 @@
 
                                             </div>
 
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -138,15 +129,12 @@
                     </div>
 
 
-
                 </div>
             </div>
         </div>
 
 
-
         <div class="container technology-block">
-
 
 
             <div class="row">
@@ -174,9 +162,6 @@
 
                                 </div>
                             <?php endif; ?>
-
-
-
 
 
                             <form action="check-av" method="POST">
@@ -232,9 +217,7 @@
                 </div>
 
 
-
-
-                    <?php if($product != null): ?>
+                <?php if($product != null): ?>
                     <div class="col-xl-6 col-md-6 col-sm-12 p-3">
                         <div class="card mb-3">
                             <div class="card-body">
@@ -308,7 +291,8 @@
                                         </form>
                                     <?php else: ?>
 
-                                        <a href="/home" class="btn btn-danger text-white btn-lg">Number not available</a>
+                                        <a href="/home" class="btn btn-danger text-white btn-lg">Number not
+                                            available</a>
 
                                     <?php endif; ?>
 
@@ -320,69 +304,57 @@
 
                         </div>
                     </div>
-                    <?php endif; ?>
+                <?php endif; ?>
 
 
                 <div class="col-xl-6 col-md-6 col-sm-12 my-3">
 
 
+                    
+                    
+                    
+
+                    
+                    
+
+                    
+                    
+                    
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
 
 
                     
@@ -393,73 +365,84 @@
 
 
 
+                    
+                    
 
 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                    
 
 
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                    
+                    
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                    
+                    
+                    
+
+                    
 
 
+                    
+
+                    
+
+                    
+                    
 
 
+                    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    
 
 
                 </div>
 
             </div>
-
 
 
         </div>

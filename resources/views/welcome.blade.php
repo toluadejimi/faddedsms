@@ -8,8 +8,8 @@
     <meta name="google-site-verification" content="0yM3122f4iiwy1_XWDgzDjBZRG-FrzGNmFYopS7a0ag">
     <meta name="google-adsense-account" content="ca-pub-8574977093637478">
 
-    <link rel="stylesheet" href="{{url('')}}/public/asset3/_content/FrontendApp/app.css%3Fv=737.css"/>
-    <link rel="icon" href="{{url('')}}/public/asset3/_content/FrontendApp/favicon.ico%3Fv=737"/>
+    <link rel="stylesheet" href="{{url('')}}/public/asset3/_content/FrontendApp/app.css"/>
+    <link rel="icon" href="{{url('')}}/public/asset3/_content/FrontendApp/favicon.ico"/>
 
 
     <script type="text/javascript" defer>

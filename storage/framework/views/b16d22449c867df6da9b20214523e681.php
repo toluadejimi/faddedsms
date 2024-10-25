@@ -33,39 +33,25 @@
 
                     <h4 class="mb-3" style="color: #fc6507">Hi <?php echo e(Auth::user()->username); ?> 👋</h4>
                     <p class="mb-0">
-                        <a href="fund-wallet" class="btn btn-dark mb-4" >NGN <?php echo e(number_format(Auth::user()->wallet, 2)); ?></a>
+                        <a href="fund-wallet"
+                           class="btn btn-dark mb-4">NGN <?php echo e(number_format(Auth::user()->wallet, 2)); ?></a>
                     </p>
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
 
 
-
-
-
-
-
-
-
-
-
-
-                    <a class="btn btn-dark border-0" href="/world"
-                       style="background: #064175"
-                    >
-                        SERVER 1
-                    </a>
-
-
-                    <a class="btn btn-dark border-0" href="/cworld"
-                       style="background: #fc6507"
-                    >
-                        SERVER 2
-                    </a>
-
-
-
-
+                    <?php echo $__env->make('servermenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
                     <div class="col-12 my-5">
@@ -78,7 +64,8 @@
 
                                             <div class="p-2 col-lg-12">
                                                 <strong>
-                                                    <h4 class="text-white d-flex justify-content-center my-3">Verifications</h4>
+                                                    <h4 class="text-white d-flex justify-content-center my-3">
+                                                        Verifications</h4>
                                                 </strong>
                                             </div>
 
@@ -169,17 +156,18 @@
                             <div class="row">
                                 <div class="col-md-6 col-xl-6 col-sm-12">
                                     <div class="card">
-                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight"
+                                             aria-labelledby="offcanvasRightLabel">
 
                                             <div class="offcanvas-body">
-
 
 
                                                 <div class="">
 
                                                     <div class="p-2 col-lg-6">
                                                         <input type="text" id="searchInput" class="form-control"
-                                                               placeholder="Search for a service..." onkeyup="filterServices()">
+                                                               placeholder="Search for a service..."
+                                                               onkeyup="filterServices()">
                                                     </div>
 
 
@@ -203,7 +191,8 @@
                                                     <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <div class="row service-row text-white">
                                                             <?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $innerKey => $innerValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                <div style="font-size: 11px" class="col-5 service-name d-flex justify-content-start">
+                                                                <div style="font-size: 11px"
+                                                                     class="col-5 service-name d-flex justify-content-start">
                                                                     🇺🇸 <?php echo e($innerValue->name); ?>
 
                                                                 </div>
@@ -221,11 +210,19 @@
                                                                 <div class="col mr-3">
                                                                     <?php if(auth()->guard()->check()): ?>
                                                                         <form action="order-usano" method="POST">
-                                                                            <input hidden name="service" value="<?php echo e($key); ?>">
-                                                                            <input hidden name="price" value="<?php echo e($cost); ?>">
-                                                                            <input hidden name="cost" value="<?php echo e($innerValue->cost); ?>">
-                                                                            <input hidden name="name" value="<?php echo e($innerValue->name); ?>">
-                                                                            <button class="myButton" style="border: 0px; background: transparent" onclick="hideButton(this)"><i class="fa fa-shopping-bag"></i></button>
+                                                                            <input hidden name="service"
+                                                                                   value="<?php echo e($key); ?>">
+                                                                            <input hidden name="price"
+                                                                                   value="<?php echo e($cost); ?>">
+                                                                            <input hidden name="cost"
+                                                                                   value="<?php echo e($innerValue->cost); ?>">
+                                                                            <input hidden name="name"
+                                                                                   value="<?php echo e($innerValue->name); ?>">
+                                                                            <button class="myButton"
+                                                                                    style="border: 0px; background: transparent"
+                                                                                    onclick="hideButton(this)"><i
+                                                                                    class="fa fa-shopping-bag"></i>
+                                                                            </button>
                                                                         </form>
                                                                     <?php else: ?>
 
@@ -263,7 +260,6 @@
                                         </div>
 
 
-
                                     </div>
                                 </div>
                             </div>
@@ -291,20 +287,14 @@
                         <div class="offcanvas-body py-0">
 
 
-
                         </div>
 
                     </div>
 
 
-
                 </div>
             </div>
         </div>
-
-
-
-
 
 
     </section>
