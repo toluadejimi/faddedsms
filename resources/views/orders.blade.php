@@ -157,6 +157,11 @@
                         </div>
 
 
+                        <div class="text-center mb-3">
+                            <p class="text-warning">Do not refresh page automatically refresh itself</p>
+                        </div>
+
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -784,7 +789,7 @@
             window.onload = function () {
                 setInterval(function () {
                     location.reload();
-                }, 6000);
+                }, 10000);
             };
         </script>
 
