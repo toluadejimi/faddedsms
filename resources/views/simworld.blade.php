@@ -36,7 +36,8 @@
 
                                 <div class="p-2 col-lg-6">
                                     <input type="text" id="searchInput" class="form-control"
-                                           placeholder="Search for a service..." onkeyup="filterServices()">
+                                           placeholder="Search for a service..."
+                                           onkeyup="filterServices()">
                                 </div>
 
 
@@ -78,14 +79,19 @@
                                             <div class="col mr-3">
                                                 @auth
                                                     <form action="order-usano" method="POST">
-                                                        <input hidden name="service" value="{{ $key }}">
-                                                        <input hidden name="price" value="{{ $cost }}">
-                                                        <input hidden name="cost" value="{{ $innerValue->cost }}">
-                                                        <input hidden name="name" value="{{ $innerValue->name }}">
+                                                        <input hidden name="service"
+                                                               value="{{ $key }}">
+                                                        <input hidden name="price"
+                                                               value="{{ $cost }}">
+                                                        <input hidden name="cost"
+                                                               value="{{ $innerValue->cost }}">
+                                                        <input hidden name="name"
+                                                               value="{{ $innerValue->name }}">
                                                         <button class="myButton"
                                                                 style="border: 0px; background: transparent"
                                                                 onclick="hideButton(this)"><i
-                                                                class="fa fa-shopping-bag"></i></button>
+                                                                class="fa fa-shopping-bag"></i>
+                                                        </button>
                                                     </form>
                                                 @else
 
@@ -110,6 +116,8 @@
 
                                             </div>
 
+
+                                            <hr style="border-color: #cccccc" class=" my-2">
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -132,11 +140,16 @@
                     <div class="card-body">
 
                         <div class="card-header d-flex justify-content-center mb-3">
-                            <h5 class="text-white">Server 2</h5>
+                            <h5 class="text-white">Server 4</h5>
                         </div>
 
 
-                        @if ($errors->any())
+                        <div class="d-flex justify-content-center mb-3">
+                            <p class="text-white text-center">Verify all countries services</p>
+                        </div>
+
+
+                    @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)

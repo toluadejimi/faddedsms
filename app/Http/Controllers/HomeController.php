@@ -776,7 +776,6 @@ class HomeController extends Controller
         $order_id = Verification::where('phone', $request->num)->first()->order_id ?? null;
         check_sms($order_id);
 
-
         $originalString = 'waiting for sms';
         $processedString = str_replace('"', '', $originalString);
 

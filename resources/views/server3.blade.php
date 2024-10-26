@@ -1,6 +1,120 @@
 @extends('layout.main')
 @section('content')
 
+
+    <div class="row">
+        <div class="col-md-6 col-xl-6 col-sm-12">
+            <div class="card">
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight"
+                     aria-labelledby="offcanvasRightLabel">
+
+                    <div class="offcanvas-body">
+
+
+                        <div class="">
+
+                            <div class="p-2 col-lg-6">
+                                <input type="text" id="searchInput" class="form-control"
+                                       placeholder="Search for a service..."
+                                       onkeyup="filterServices()">
+                            </div>
+
+
+                            <div class="row my-3 p-1 text-white"
+                                 style="background: #dedede; border-radius: 10px; font-size: 10px; border-radius: 12px">
+                                <div class="col-5">
+                                    <h5 class="mt-2">Services</h5>
+                                </div>
+                                <div class="col">
+                                    <h5 class="mt-2">Price</h5>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div style="height:700px; width:100%; overflow-y: scroll;" class="p-2">
+
+
+                            @foreach ($servicesd as $key => $value)
+                                <div class="row service-row text-white">
+                                    @foreach ($value as $innerKey => $innerValue)
+                                        <div style="font-size: 11px"
+                                             class="col-5 service-name d-flex justify-content-start">
+                                            🇺🇸 {{ $innerValue->name }}
+                                        </div>
+
+                                        <div style="font-size: 11px" class="col">
+                                            @php $costd = $get_rated * $innerValue->cost + $margind  @endphp
+                                            <strong>N{{ number_format($costd, 2) }}</strong>
+                                        </div>
+
+                                        <div style="font-size: 11px" class="col">
+
+                                        </div>
+
+
+                                        <div class="col mr-3">
+                                            @auth
+                                                <form action="order-usano" method="POST">
+                                                    <input hidden name="service"
+                                                           value="{{ $key }}">
+                                                    <input hidden name="price"
+                                                           value="{{ $costd }}">
+                                                    <input hidden name="cost"
+                                                           value="{{ $innerValue->cost }}">
+                                                    <input hidden name="name"
+                                                           value="{{ $innerValue->name }}">
+                                                    <button class="myButton"
+                                                            style="border: 0px; background: transparent"
+                                                            onclick="hideButton(this)"><i
+                                                            class="fa fa-shopping-bag"></i>
+                                                    </button>
+                                                </form>
+                                            @else
+
+                                                <a class=""
+                                                   href="/login">
+                                                    <i class="fa fa-lock text-dark"> Login</i>
+                                                </a>
+                                            @endauth
+
+
+                                            <script>
+                                                function hideButton(link) {
+                                                    // Hide the clicked link
+                                                    link.style.display = 'none';
+
+                                                    setTimeout(function () {
+                                                        link.style.display = 'inline'; // or 'block' depending on your layout
+                                                    }, 5000); // 5 seconds
+                                                }
+                                            </script>
+
+
+                                        </div>
+
+
+                                        <hr style="border-color: #cccccc" class=" my-2">
+                                    @endforeach
+                                </div>
+                            @endforeach
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
     <section id="technologies mt-4 my-5">
         <div class="container title my-5">
             <div class="row justify-content-center text-center wow fadeInUp" data-wow-delay="0.2s">
@@ -38,16 +152,7 @@
                     <p class="mb-2">
                         What will you like to do ?
                     </p>
-                    {{--                    <button--}}
-                    {{--                        class="btn btn-light-secondary my-3"--}}
-                    {{--                        type="button"--}}
-                    {{--                        data-bs-toggle="offcanvas"--}}
-                    {{--                        data-bs-target="#offcanvasRight"--}}
-                    {{--                        aria-controls="offcanvasRight"--}}
-                    {{--                        style="background: #064174"--}}
-                    {{--                    >--}}
-                    {{--                        USA SERVICES--}}
-                    {{--                    </button>--}}
+
 
 
                     @include('servermenu')
@@ -60,8 +165,9 @@
 
                                 <div class="form-group ">
                                     <h4 class="text-white my-4"> Search for 🇺🇸 USA services only</h4>
+                                        <p class="text-white text-center mb-2">Verify all USA services</p>
                                     <input type="text" class="form-control" id="searchMeter"
-                                           placeholder="Search for services">
+                                           placeholder="Search for services ex: Facebook, whatsapp, Telegram">
 
                                     <div id="serviceResult" class="my-5" style="display: none;"></div>
                                 </div>

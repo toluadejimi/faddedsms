@@ -73,6 +73,9 @@ class ViopController extends Controller
     {
 
 
+        $data['servicesd'] = get_services();
+        $data['get_rated'] = Setting::where('id', 1)->first()->rate;
+        $data['margind'] = Setting::where('id', 1)->first()->margin;
         $s_rate = Setting::where('id', 4)->first();
         $data['services'] = get_viop_services();
         $data['get_rate'] = Setting::where('id', 4)->first()->rate;
@@ -207,7 +210,9 @@ class ViopController extends Controller
             return back()->with('message', "Order canceled, You have been funded NGN $cost");
 
         }else{
-            return back()->with('error', 'Order cancel failed, contact admin');
+            User::where('id', $user_id)->increment('wallet', $cost);
+            Verification::where('order_id', $product_id)->delete();
+            return back()->with('message', "Order canceled, You have been funded NGN $cost");
 
         }
 
