@@ -299,6 +299,7 @@ function check_sms($orderID){
     curl_close($curl);
     $result = $var ?? null;
 
+
     if(strstr($result, "NO_ACTIVATION") !== false){
 
         return 1;
@@ -322,7 +323,6 @@ function check_sms($orderID){
         return 4;
 
     }
-
 
 
 

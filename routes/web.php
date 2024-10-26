@@ -118,9 +118,7 @@ Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () 
     Route::any('cancleworld-sms',  [WorldNumberController::class,'cancleworld_sms']);
 
 
-
-
-
+    Route::post('server1_order',  [HomeController::class,'server1_order']);
 
 
 
@@ -156,7 +154,7 @@ Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () 
 
 
 
-    Route::post('order-usano',  [HomeController::class,'order_now']);
+    //Route::post('order-server1',  [HomeController::class,'order_now']);
 
     Route::any('check-sms',  [HomeController::class,'check_sms']);
 

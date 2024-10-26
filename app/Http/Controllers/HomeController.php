@@ -83,7 +83,7 @@ class HomeController extends Controller
     }
 
 
-    public function order_now(Request $request)
+    public function server1_order(Request $request)
     {
 
 

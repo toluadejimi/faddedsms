@@ -58,7 +58,8 @@
 
                                         <div class="col mr-3">
                                             @auth
-                                                <form action="order-usano" method="POST">
+                                                <form action="server1_order" method="POST">
+                                                    @csrf
                                                     <input hidden name="service"
                                                            value="{{ $key }}">
                                                     <input hidden name="price"

@@ -47,7 +47,8 @@
 
                                 <div class="p-2 col-lg-6">
                                     <input type="text" id="searchInput" class="form-control"
-                                           placeholder="Search for a service..." onkeyup="filterServices()">
+                                           placeholder="Search for a service..."
+                                           onkeyup="filterServices()">
                                 </div>
 
 
@@ -88,15 +89,21 @@
 
                                             <div class="col mr-3">
                                                 @auth
-                                                    <form action="order-usano" method="POST">
-                                                        <input hidden name="service" value="{{ $key }}">
-                                                        <input hidden name="price" value="{{ $cost }}">
-                                                        <input hidden name="cost" value="{{ $innerValue->cost }}">
-                                                        <input hidden name="name" value="{{ $innerValue->name }}">
+                                                    <form action="server1_order" method="POST">
+                                                        @csrf
+                                                        <input hidden name="service"
+                                                               value="{{ $key }}">
+                                                        <input hidden name="price"
+                                                               value="{{ $cost }}">
+                                                        <input hidden name="cost"
+                                                               value="{{ $innerValue->cost }}">
+                                                        <input hidden name="name"
+                                                               value="{{ $innerValue->name }}">
                                                         <button class="myButton"
                                                                 style="border: 0px; background: transparent"
                                                                 onclick="hideButton(this)"><i
-                                                                class="fa fa-shopping-bag"></i></button>
+                                                                class="fa fa-shopping-bag"></i>
+                                                        </button>
                                                     </form>
                                                 @else
 
@@ -121,6 +128,8 @@
 
                                             </div>
 
+
+                                            <hr style="border-color: #cccccc" class=" my-2">
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -135,6 +144,7 @@
                 </div>
             </div>
         </div>
+
 
 
         <div class="container technology-block">
@@ -591,8 +601,7 @@
                                                             </style>
 
                                                             <td style="font-size: 12px; color: white">
-                                                                <div id="l1" class="justify-content-start">
-                                                                </div>
+
                                                                 <div>
                                                                     <input style="background: none;" class="border-0 "
                                                                            id="response-input{{$data->id}}">
@@ -731,13 +740,27 @@
                                                         @endif
                                                     @endif
 
+                                                    <td>
+                                                        @if ($data->status == 1)
+                                                            <span
+                                                                style="background: orange; border:0px; font-size: 10px"
+                                                                class="btn btn-warning btn-sm">Pending</span>
+                                                            <a href="delete-order?id={{  $data->id }}&delete=1"
+                                                               style="background: rgb(168, 0, 14); border:0px; font-size: 10px"  onclick="this.style.display='none'"
+                                                               class="btn btn-warning btn-sm">Delete</span>
 
+                                                                @else
+                                                                    <span style="font-size: 10px;"
+                                                                          class="text-white btn btn-success btn-sm">Completed</span>
+                                                        @endif
+
+                                                    </td>
 
                                                 </tr>
 
                                             @empty
 
-                                                No verification
+                                                <p class="text-white mb-2">No verification found</p>
                                             @endforelse
 
                                         </table>
@@ -761,7 +784,7 @@
             window.onload = function () {
                 setInterval(function () {
                     location.reload();
-                }, 40000);
+                }, 6000);
             };
         </script>
 
