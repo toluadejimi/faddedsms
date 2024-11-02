@@ -125,6 +125,13 @@
                            href="https://linktr.ee/faddedsocials">Support</a>
                     </li>
 
+                    <li class="nav-item px-1">
+                        <a class="nav-link"
+                           href="https://linktr.ee/faddedsocials">Tutorial - How to buy sms
+                        </a>
+                    </li>
+
+
 
                     <li class="nav-item px-1">
                         <a class="nav-link"

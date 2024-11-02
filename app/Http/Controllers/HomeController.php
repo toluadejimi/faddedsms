@@ -86,14 +86,14 @@ class HomeController extends Controller
     public function server1_order(Request $request)
     {
 
-
-        if (Auth::user()->wallet < 0) {
-            return back()->with('error', "Insufficient Funds");
+        if($request->price < 0 || $request->price == 0){
+            return back()->with('error', "something went wrong");
         }
 
-        if (Auth::user()->wallet < $request->price) {
-            return back()->with('error', "Insufficient Funds");
+        if($request->price < 600 ){
+            return back()->with('error', "something went wrong");
         }
+
 
         if (Auth::user()->wallet < $request->price) {
             return back()->with('error', "Insufficient Funds");

@@ -44,6 +44,11 @@ class SimController extends Controller
     public function order_csms(request $request)
     {
 
+
+
+
+
+
         $token = env('SIMTOKEN');
         $request->validate([
             'country' => 'required|string',
@@ -84,12 +89,24 @@ class SimController extends Controller
                 ],
             ]);
 
+
+
+
             $responseBody = json_decode($response->getBody(), true);
+
+            if($responseBody['price'] < 0 || $request->price == 0){
+                return back()->with('error', "something went wrong");
+            }
+
+            if($responseBody['price'] < 600 ){
+                return back()->with('error', "something went wrong");
+            }
+
             $phone = str_replace("+", "", $responseBody['phone']);
 
             User::where('id', Auth::id())->decrement('wallet', $cost);
 
-                Verification::where('phone', $phone)->where('status', 2)->delete() ?? null;
+            Verification::where('phone', $phone)->where('status', 2)->delete() ?? null;
             $ver = new Verification();
             $ver->user_id = Auth::id();
             $ver->phone = $phone;
@@ -106,6 +123,8 @@ class SimController extends Controller
             $data['id'] = $responseBody['id'];
             $data['code'] = 200;
             return $data;
+
+
         } catch (\Exception $e) {
             // Handle errors
             return response()->json([

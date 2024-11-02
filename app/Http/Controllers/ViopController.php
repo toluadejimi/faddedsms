@@ -121,6 +121,19 @@ class ViopController extends Controller
         $cost = $get_cost['price'];
 
 
+
+        if($request->price < 0 || $request->price == 0){
+            return response()->json([
+                'message' => 'Not Available'
+            ]);
+        }
+
+        if($request->price < 600 ){
+            return response()->json([
+                'message' => 'Not Available'
+            ]);
+        }
+
         if ($av == 0) {
             return response()->json([
                 'message' => 'Not Availabe'

@@ -251,6 +251,15 @@ class WorldNumberController extends Controller
         }
 
 
+        if($request->price < 0 || $request->price == 0){
+            return back()->with('error', "something went wrong");
+        }
+
+        if($request->price < 600 ){
+            return back()->with('error', "something went wrong");
+        }
+
+
         $country = $request->country;
         $service = $request->service;
         $price = $request->price;

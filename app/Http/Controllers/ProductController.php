@@ -29,9 +29,6 @@ class ProductController extends Controller
         $in_stock = MainItem::where('product_id', $product_id)->count();
 
 
-
-
-
         if($pamount > Auth::user()->wallet){
 
             return back()->with('error', 'Insufficient Funds, Fund your wallet');
