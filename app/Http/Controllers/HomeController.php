@@ -863,7 +863,7 @@ class HomeController extends Controller
         $data['services'] = get_services();
         $data['get_rate'] = Setting::where('id', 1)->first()->rate;
         $data['margin'] = Setting::where('id', 1)->first()->margin;
-        $data['orders'] = Verification::where('user_id', Auth::id())->paginate('10');
+        $data['orders'] = Verification::latest()->where('user_id', Auth::id())->paginate('10');
 
 
         return view('orders', $data);
