@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SimController;
+use App\Http\Controllers\TextVerifiedController;
 use App\Http\Controllers\ViopController;
 use App\Http\Controllers\WorldNumberController;
 use Illuminate\Support\Facades\Route;
@@ -122,12 +123,10 @@ Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () 
 
 
 
-
-
-
-
-
     Route::get('server3',  [ViopController::class,'index']);
+
+
+
     Route::post('viop-buy',  [ViopController::class,'viop_buy']);
 
     Route::any('get-viopsms',  [ViopController::class,'get_viopsms']);
@@ -179,6 +178,11 @@ Route::group(['middleware' => ['auth', 'user', 'session.timeout']], function () 
     Route::any('update-viop-rate', [ViopController::class, 'update_viop_rate']);
     Route::any('update-viop-cost', [ViopController::class, 'update_viop_cost']);
 
+
+
+
+
+    Route::get('server4',  [TextVerifiedController::class,'index']);
 
 
 

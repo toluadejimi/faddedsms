@@ -122,7 +122,7 @@
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="#">Support</a>
+                           href="https://linktr.ee/faddedsocials">Support</a>
                     </li>
 
 
