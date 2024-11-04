@@ -125,6 +125,13 @@
                            href="https://t.me/faddedsmsteam">Support</a>
                     </li>
 
+
+                    <li class="nav-item px-1">
+                        <a class="nav-link"
+                           href=https://t.me/faddedsms">Join our Telegram channel</a>
+                    </li>
+
+
                     <li class="nav-item px-1">
                         <a class="nav-link"
                            href="https://youtu.be/j3TYFIT1wB4?si=gtWMfhdKcje070T0">Tutorial - How to buy sms
@@ -207,7 +214,7 @@
         </div>
         <ul class="messages">
             <li style="color: white" class="other"><a style="color: white"  href="https://t.me/faddedsmsteam" target="_blank"><i class="bi bi-telegram"> </i> Get Support </a></li>
-            <li style="color: white" class="other"><a style="color: white"  href="https://t.me/faddedsmsl" target="_blank"><i class="bi bi-telegram"> </i> Join our channel</a></li>
+            <li style="color: white" class="other"><a style="color: white"  href="https://t.me/faddedsms" target="_blank"><i class="bi bi-telegram"> </i> Join our channel</a></li>
         </ul>
     </div>
 </div>
