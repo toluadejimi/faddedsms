@@ -128,7 +128,7 @@
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href=https://t.me/faddedsms">Join our Telegram channel</a>
+                           href="https://t.me/faddedsms">Join our Telegram channel</a>
                     </li>
 
 
