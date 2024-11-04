@@ -122,12 +122,12 @@
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="https://linktr.ee/faddedsocials">Support</a>
+                           href="https://t.me/faddedsmsteam">Support</a>
                     </li>
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="https://linktr.ee/faddedsocials">Tutorial - How to buy sms
+                           href="https://youtu.be/j3TYFIT1wB4?si=gtWMfhdKcje070T0">Tutorial - How to buy sms
                         </a>
                     </li>
 
