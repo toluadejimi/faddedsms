@@ -122,7 +122,7 @@
 
                     <li class="nav-item px-1">
                         <a class="nav-link"
-                           href="https://t.me/faddedsmsteam">Support</a>
+                           href="https://t.me/faddedsms">Support</a>
                     </li>
 
 
