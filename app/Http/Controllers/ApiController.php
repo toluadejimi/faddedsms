@@ -329,7 +329,6 @@ class ApiController extends Controller
                 User::where('id', $get_key->id)->increment('wallet', $ngnprice);
                 $message = "FADDEDSMS | Error";
                 send_notification($message);
-                send_notification3($message);
 
                 return response()->json([
                     'status' => false,

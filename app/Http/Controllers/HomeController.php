@@ -207,7 +207,6 @@ class HomeController extends Controller
                     User::where('id', $user_id)->increment('wallet', $order->cost);
                     $message = Auth::user()->email . " just been refunded | $order->cost | by admin";
                     send_notification($message);
-                    send_notification2($message);
                     return back()->with('message', "Order has been canceled, NGN$amount has been refunded");
                 }
 
@@ -227,7 +226,6 @@ class HomeController extends Controller
 
                 $message = Auth::user()->email . " just been refunded | $order->cost | by admin";
                 send_notification($message);
-                send_notification2($message);
 
                 return back()->with('message', "Order has been canceled, NGN$amount has been refunded");
             }
@@ -245,7 +243,7 @@ class HomeController extends Controller
 
                 $message = Auth::user()->email . " just been refunded | $order->cost | by admin";
                 send_notification($message);
-                send_notification2($message);
+
 
                 return redirect()->with('message', "Order has been canceled, NGN$amount has been refunded");
             }
@@ -270,7 +268,7 @@ class HomeController extends Controller
 
                     $message = Auth::user()->email . " just been refunded | $order->cost | by admin";
                     send_notification($message);
-                    send_notification2($message);
+
 
                     return back()->with('message', "Order has been canceled, NGN$amount has been refunded");
 
@@ -292,7 +290,7 @@ class HomeController extends Controller
                 User::where('id', $user_id)->increment('wallet', $order->cost);
                 $message = Auth::user()->email . " just been refunded | $order->cost | by admin";
                 send_notification($message);
-                send_notification2($message);
+
 
                 return back()->with('message', "Order has been canceled, NGN$amount has been refunded");
             }
@@ -310,7 +308,7 @@ class HomeController extends Controller
 
                 $message = Auth::user()->email . " just been refunded | $order->cost | by admin";
                 send_notification($message);
-                send_notification2($message);
+
                 return back()->with('message', "Order has been canceled, NGN$amount has been refunded");
             }
         }
@@ -373,7 +371,7 @@ class HomeController extends Controller
 
 
             $message = Auth::user()->email . "| wants to fund |  NGN " . number_format($request->amount) . " | with ref | $ref |  on FaddedSMS";
-            send_notification2($message);
+            send_notification($message);
 
 
             return Redirect::to($url);
@@ -406,7 +404,7 @@ class HomeController extends Controller
 
 
             $message = Auth::user()->email . "| wants to fund Manually |  NGN " . number_format($request->amount) . " | with ref | $ref |  on FaddedSMS";
-            send_notification2($message);
+            send_notification($message);
 
 
             $data['account_details'] = AccountDetail::where('id', 1)->first();
@@ -442,7 +440,7 @@ class HomeController extends Controller
 
 
         $message = Auth::user()->email . "| submitted payment receipt |  NGN " . number_format($request->amount) . " | on FaddedSMS";
-        send_notification2($message);
+        send_notification($message);
 
         return view('confirm-pay');
     }
@@ -911,7 +909,7 @@ class HomeController extends Controller
                 $bb = number_format($balance, 2);
                 $message = $email. "| just canceled | $order->service | type is $order->type | $amount is refunded | Balance is  $bb";
                 send_notification($message);
-                send_notification2($message);
+
 
                 return back()->with('message', "Order has been canceled, NGN$amount has been refunded");
             }
@@ -957,7 +955,7 @@ class HomeController extends Controller
                     $bb = number_format($balance, 2);
                     $message = $email. "| just canceled | $order->service | type is $order->type | $amount is refunded | Balance is  $bb";
                     send_notification($message);
-                    send_notification2($message);
+
                     return back()->with('message', "Order has been canceled, NGN$amount has been refunded");
                 }
 
@@ -1083,7 +1081,7 @@ class HomeController extends Controller
             $url = $request->url();
             $message = $request->email . "| just just funded wallet on ace verify | $ip | NGN" . $request->amount;
             send_notification($message);
-            send_notification2($message);
+
 
 
                 User::where('email', $request->email)->increment('wallet', $request->amount) ?? null;
@@ -1113,7 +1111,7 @@ class HomeController extends Controller
             $ip = $request->ip();
             $url = $request->url();
             $message = $request->email . "| just is trying to fund wallet on ace verify | $ip | $url | NGN" . $request->amount;
-            send_notification2($message);
+            send_notification($message);
         }
 
         return response()->json([
