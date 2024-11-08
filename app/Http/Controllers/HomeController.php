@@ -1079,7 +1079,7 @@ class HomeController extends Controller
 
             $ip = $request->ip();
             $url = $request->url();
-            $message = $request->email . "| just just funded wallet on ace verify | $ip | NGN" . $request->amount;
+            $message = $request->email . "| just just funded wallet on FADDEDSMS | $ip | NGN" . $request->amount;
             send_notification($message);
 
 
@@ -1110,7 +1110,7 @@ class HomeController extends Controller
         } else {
             $ip = $request->ip();
             $url = $request->url();
-            $message = $request->email . "| just is trying to fund wallet on ace verify | $ip | $url | NGN" . $request->amount;
+            $message = $request->email . "| just is trying to fund wallet on FADDEDSMS | $ip | $url | NGN" . $request->amount;
             send_notification($message);
         }
 
