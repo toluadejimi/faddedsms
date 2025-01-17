@@ -431,6 +431,28 @@ class AdminController extends Controller
 
 
 
+    public
+    function remove_user(request $request)
+    {
+
+        $role = User::where('id', Auth::id())->first()->role_id ?? null;
+        if ($role != 5) {
+
+            Auth::logout();
+            return redirect('/admin')->with('error', "You do not have permission");
+
+        }
+
+
+        User::where('id', $request->id)->delete();
+        Verification::where('user_id', $request->id)->delete();
+        Transaction::where('user_id', $request->id)->delete();
+
+        return redirect('users')->with('message', 'User deleted successfully');
+
+
+    }
+
 
 
 
